@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initialize total price to 0
     let totalPrice = 0;
-
+    cccx;
     // Populate the table with cart items and calculate the total price
     cart.forEach((product) => {
       const row = document.createElement("tr");
