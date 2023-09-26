@@ -129,6 +129,8 @@ function sortProducts() {
       const discountedPriceB = Math.round(b.price * (1 - b.discount / 100));
       return discountedPriceB - discountedPriceA;
     });
+  } else if (selectedOption === "defaultSort") {
+    filteredProducts = [...products];
   }
 
   currentPage = 1;
