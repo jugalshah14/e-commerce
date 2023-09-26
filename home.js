@@ -3,6 +3,42 @@ const itemsPerPage = 8;
 let currentPage = 1;
 let filteredProducts = [];
 
+function populateCategoryDropdown() {
+  const categoryDropdown = document.getElementById("CategoryFilter");
+  const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+  categoryDropdown.innerHTML = "";
+
+  const defaultOption = document.createElement("option");
+  defaultOption.value = "";
+  defaultOption.textContent = "All Categories";
+  categoryDropdown.appendChild(defaultOption);
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category.name;
+    option.textContent = category.name;
+    categoryDropdown.appendChild(option);
+  });
+}
+function filterProductsByCategory() {
+  const selectedCategory = document.getElementById("CategoryFilter").value;
+
+  if (selectedCategory === "") {
+    filteredProducts = products;
+  } else {
+    filteredProducts = products.filter(
+      (product) =>
+        product.category.toLowerCase() === selectedCategory.toLowerCase()
+    );
+  }
+
+  currentPage = 1;
+
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
+}
+
 function performSearch() {
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value.toLowerCase().trim();
@@ -24,6 +60,9 @@ function displayProductsOnPage(products, container, page) {
   container.innerHTML = "";
   createProductCards(productsToDisplay, container, "Product added to cart");
 }
+
+const categoryDropdown = document.getElementById("CategoryFilter");
+categoryDropdown.addEventListener("change", filterProductsByCategory);
 
 const prevPageButton = document.getElementById("prev-page");
 const nextPageButton = document.getElementById("next-page");
@@ -176,6 +215,7 @@ function getFormDataFromLocalStorage() {
   return items.map((item) => ({
     id: item.id,
     title: item.title,
+    category: item.category,
     image: item.img,
     price: item.price,
     discount: item.discount,
@@ -187,7 +227,7 @@ const formDataFromLocalStorage = getFormDataFromLocalStorage();
 
 products.push(...formDataFromLocalStorage);
 filteredProducts = [...products];
-
+populateCategoryDropdown();
 createProductCards(filteredProducts, productContainer, "Product added to cart");
 displayProductsOnPage(filteredProducts, productContainer, currentPage);
 updatePaginationUI(filteredProducts, paginationContainer);

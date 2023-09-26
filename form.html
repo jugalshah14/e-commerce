@@ -22,6 +22,7 @@
                 </a>
             </ul>
             <form class="d-flex mr-5" style="gap: 20px;">
+                <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
                 <a href="./home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
                 <a href="./AddToCart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             </form>
@@ -33,8 +34,17 @@
         <br />
         <div class="container">
             <div id="addItemForm">
-                <label>Title :</label>
-                <input type="text" placeholder="Title" name="title" id="Title" />
+                <div class="row">
+                    <div class="col-6">
+                        <label>Title :</label>
+                        <input type="text" placeholder="Title" name="title" id="Title" style="width: 90%;" />
+                    </div>
+                    <div class="col-6">
+                        <label>Category : </label>
+                        <select id="Category" name="category"></select>
+                    </div>
+                </div>
+                
 
                 <div class="row mt-3">
                     <div class="col-6">
@@ -58,8 +68,7 @@
                         <label for="img">Select image:</label>
                         <input type="file" id="img" accept="image/*">
                         <img id="itemImage" src="" alt="" width="50" height="50">
-                    </div>
-                   
+                    </div>                
                 </div>
             </div>
             </form>
@@ -75,6 +84,7 @@
                 <thead>
                     <tr>
                         <th>Title</th>
+                        <th>Category</th>
                         <th>Price (₹)</th>
                         <th>Discount (%)</th>
                         <th>Quantity</th>

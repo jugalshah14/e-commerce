@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   function addToLocalStorage() {
     const title = document.getElementById("Title").value;
+    const category = document.getElementById("Category").value;
     const price = parseFloat(document.getElementById("Price").value);
     const imgInput = document.getElementById("img");
     const discountInput = document.getElementById("Discount");
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const availableQuantity = document.getElementById("Quantity").value;
     if (
       title &&
+      category &&
       !isNaN(price) &&
       !isNaN(discount) &&
       availableQuantity &&
@@ -30,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const newItem = {
           id: uniqueId,
           title,
+          category,
           discount,
           price,
           discountedPrice,
@@ -42,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("items", JSON.stringify(items));
 
         document.getElementById("Title").value = "";
+        document.getElementById("Category").value = "";
         document.getElementById("Discount").value = "";
         document.getElementById("Price").value = "";
         document.getElementById("img").value = "";
@@ -72,15 +76,37 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Discount percentage cannot be greater than 100%");
         discountInput.value = 100; // Set the discount to 100% if it's greater
       }
-
-      // const discountedPrice = price - (price * discount) / 100;
-      // document.getElementById("discountedPrice").textContent =
-      //   discountedPrice.toFixed(2);
     }
   }
 
   // Call updateDiscountedPrice initially to calculate and display the initial discounted price
   updateDiscountedPrice();
+
+  // Function to populate the category dropdown
+  function populateCategoryDropdown() {
+    const categoryDropdown = document.getElementById("Category");
+    const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+    // Clear existing options
+    categoryDropdown.innerHTML = "";
+
+    // Add a default "Select Category" option
+    const defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.textContent = "Select Category";
+    categoryDropdown.appendChild(defaultOption);
+
+    // Add category options
+    categories.forEach((category) => {
+      const option = document.createElement("option");
+      option.value = category.name;
+      option.textContent = category.name;
+      categoryDropdown.appendChild(option);
+    });
+  }
+
+  // Call the function to populate the category dropdown
+  populateCategoryDropdown();
 
   function populateTable() {
     const itemTableBody = document.getElementById("itemTableBody");
@@ -97,14 +123,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const cell5 = row.insertCell(4);
       const cell6 = row.insertCell(5);
       const cell7 = row.insertCell(6);
+      const cell8 = row.insertCell(7);
 
       cell1.innerHTML = item.title;
-      cell2.innerHTML = item.price;
-      cell3.innerHTML = item.discount;
-      cell4.innerHTML = item.availableQuantity;
-      cell5.innerHTML = `<img src="${item.img}" alt="${item.title}" width="50" height="50" />`;
-      cell6.innerHTML = `<button class="btn btn-primary" onclick="editItem(${index})">Edit</button>`;
-      cell7.innerHTML = `<button class="btn btn-primary" onclick="deleteItem(${index})">Delete</button>`;
+      cell2.innerHTML = item.category;
+      cell3.innerHTML = item.price;
+      cell4.innerHTML = item.discount;
+      cell5.innerHTML = item.availableQuantity;
+      cell6.innerHTML = `<img src="${item.img}" alt="${item.title}" width="50" height="50" />`;
+      cell7.innerHTML = `<button class="btn btn-primary" onclick="editItem(${index})">Edit</button>`;
+      cell8.innerHTML = `<button class="btn btn-primary" onclick="deleteItem(${index})">Delete</button>`;
     });
   }
 
@@ -113,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemToEdit = items[index];
 
     document.getElementById("Title").value = itemToEdit.title;
+    document.getElementById("Category").value = itemToEdit.category;
     document.getElementById("Price").value = itemToEdit.price;
     document.getElementById("Discount").value = itemToEdit.discount;
     document.getElementById("Quantity").value = itemToEdit.availableQuantity;
@@ -130,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const items = JSON.parse(localStorage.getItem("items")) || [];
     const editedItem = {
       title: document.getElementById("Title").value,
+      category: document.getElementById("Category").value,
       price: document.getElementById("Price").value,
       discount: document.getElementById("Discount").value,
       availableQuantity: document.getElementById("Quantity").value,

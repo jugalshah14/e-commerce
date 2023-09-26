@@ -19,6 +19,7 @@
                 </a>
             </ul>
             <form class="d-flex mr-5" style="gap: 20px;">
+                <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
                 <a href="form.html"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
                 <a href="AddToCart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                 <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
@@ -31,6 +32,8 @@
                 aria-label="Search by title" aria-describedby="search-button" oninput="performSearch()">
         </div>
         <div id="sort-container">
+            <label>Sort by Category:</label>
+            <select id="CategoryFilter" name="category"></select>
             <label for="sort-dropdown">Sort by Price:</label>
             <select id="sort-dropdown">
                 <option value="defaultSort" selected>Select Sorting</option>
