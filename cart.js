@@ -152,6 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
       if (quantity >= 1 && quantity <= availableQuantity) {
         cart[index].quantity = quantity;
         localStorage.setItem("cart", JSON.stringify(cart));
+      } else if (quantity < 1) {
+        // If quantity is less than 1, set it to 1
+        cart[index].quantity = 1;
+        localStorage.setItem("cart", JSON.stringify(cart));
       } else {
         alert(
           "Invalid quantity. Please choose a quantity between 1 and " +
@@ -159,6 +163,15 @@ document.addEventListener("DOMContentLoaded", () => {
             "."
         );
       }
+
+      // Update the quantity input field to display the new quantity
+      const quantityInput = document.querySelector(`[data-index="${index}"]`);
+      if (quantityInput) {
+        quantityInput.value = cart[index].quantity;
+      }
+
+      // Update the cart display
+      updateCartDisplay();
     }
   }
 });

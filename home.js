@@ -160,6 +160,7 @@ function addToCart(product, button, customMessage, discountedPrice) {
     const cartItem = {
       ...product,
       discountedPrice: discountedPrice,
+      quantity: 1,
     };
 
     cart.push(cartItem);
