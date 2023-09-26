@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       let totalPrice = 0;
       let totalDiscountedPrice = 0;
-      let totalItems = 0; // Initialize totalItems to 0
+      let totalItems = 0;
 
       cart.forEach((product, index) => {
         const cartItemDiv = document.createElement("div");
@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         cart[index].quantity = quantity;
         localStorage.setItem("cart", JSON.stringify(cart));
       } else if (quantity < 1) {
-        // If quantity is less than 1, set it to 1
         cart[index].quantity = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       } else {
@@ -164,13 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
 
-      // Update the quantity input field to display the new quantity
       const quantityInput = document.querySelector(`[data-index="${index}"]`);
       if (quantityInput) {
         quantityInput.value = cart[index].quantity;
       }
 
-      // Update the cart display
       updateCartDisplay();
     }
   }

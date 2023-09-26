@@ -70,14 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
         zip: document.getElementById("zip").value,
       };
 
-      // Check if any of the fields are empty
       if (Object.values(shippingInfo).some((value) => value.trim() === "")) {
         alert("Please fill in all fields.");
       } else {
-        // Store shipping information in local storage
         localStorage.setItem("shippingInfo", JSON.stringify(shippingInfo));
 
-        // Create and display a dialog box with the shipping information
         const shippingInfoDialog = `
                             <div class="modal fade" id="shipping-info-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
@@ -104,7 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.insertAdjacentHTML("beforeend", shippingInfoDialog);
 
-        // Show the modal
         $("#shipping-info-dialog").modal("show");
       }
     });
