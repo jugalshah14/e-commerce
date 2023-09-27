@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const discountInput = document.getElementById("Discount");
     const discount = parseFloat(discountInput.value);
     const availableQuantity = document.getElementById("Quantity").value;
+
     if (
       title &&
       category &&
@@ -21,42 +22,50 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const discountedPrice = price - (price * discount) / 100;
+      const selectedImages = imgInput.files;
+      const imageFiles = [];
 
-      const imgFile = imgInput.files[0];
-      const reader = new FileReader();
+      if (selectedImages.length > 0) {
+        for (let i = 0; i < selectedImages.length; i++) {
+          const imgFile = selectedImages[i];
+          const reader = new FileReader();
 
-      reader.onload = function (event) {
-        const imgBase64 = event.target.result;
-        const uniqueId = new Date().getTime() + Math.random();
-        const newItem = {
-          id: uniqueId,
-          title,
-          category,
-          discount,
-          price,
-          discountedPrice,
-          availableQuantity,
-          img: imgBase64,
-        };
+          reader.onload = function (event) {
+            const imgBase64 = event.target.result;
+            imageFiles.push(imgBase64);
 
-        let items = JSON.parse(localStorage.getItem("items")) || [];
-        items.push(newItem);
-        localStorage.setItem("items", JSON.stringify(items));
+            if (imageFiles.length === selectedImages.length) {
+              const uniqueId = new Date().getTime() + Math.random();
+              const newItem = {
+                id: uniqueId,
+                title,
+                category,
+                discount,
+                price,
+                availableQuantity,
+                img: imageFiles, // Store the array of image data
+              };
 
-        document.getElementById("Title").value = "";
-        document.getElementById("Category").value = "";
-        document.getElementById("Discount").value = "";
-        document.getElementById("Price").value = "";
-        document.getElementById("img").value = "";
-        document.getElementById("Quantity").value = "";
+              let items = JSON.parse(localStorage.getItem("items")) || [];
+              items.push(newItem);
+              localStorage.setItem("items", JSON.stringify(items));
 
-        populateTable();
-      };
+              document.getElementById("Title").value = "";
+              document.getElementById("Category").value = "";
+              document.getElementById("Discount").value = "";
+              document.getElementById("Price").value = "";
+              document.getElementById("img").value = "";
+              document.getElementById("Quantity").value = "";
 
-      reader.readAsDataURL(imgFile);
+              populateTable();
+            }
+          };
+
+          reader.readAsDataURL(imgFile);
+        }
+      }
     } else {
-      alert("Please fill in all fields and select an image.");
+      alert("Please fill in all fields and select one or more images.");
     }
   }
 
@@ -130,7 +139,22 @@ document.addEventListener("DOMContentLoaded", function () {
       cell3.innerHTML = item.price;
       cell4.innerHTML = item.discount;
       cell5.innerHTML = item.availableQuantity;
-      cell6.innerHTML = `<img src="${item.img}" alt="${item.title}" width="50" height="50" />`;
+
+      // Create a div to hold the images
+      const imgContainer = document.createElement("div");
+      imgContainer.className = "img-container";
+
+      // Iterate through the item's images and create img elements
+      item.img.forEach((imgData) => {
+        const img = document.createElement("img");
+        img.src = imgData;
+        img.alt = item.title;
+        imgContainer.appendChild(img);
+      });
+
+      // Append the image container to the cell
+      cell6.appendChild(imgContainer);
+
       cell7.innerHTML = `<button class="btn btn-primary" onclick="editItem(${index})">Edit</button>`;
       cell8.innerHTML = `<button class="btn btn-primary" onclick="deleteItem(${index})">Delete</button>`;
     });
@@ -145,8 +169,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("Price").value = itemToEdit.price;
     document.getElementById("Discount").value = itemToEdit.discount;
     document.getElementById("Quantity").value = itemToEdit.availableQuantity;
-    const itemImage = document.getElementById("itemImage");
-    itemImage.src = itemToEdit.img;
+    const itemImageContainer = document.getElementById("itemImage");
+
+    // Clear existing images in the itemImage container
+    itemImageContainer.innerHTML = "";
+
+    // Populate the itemImage container with the item's images
+    itemToEdit.img.forEach((imgData) => {
+      const img = document.createElement("img");
+      img.src = imgData;
+      img.alt = itemToEdit.title;
+      img.style.maxWidth = "100px"; // Adjust the maximum width of each image as needed
+      img.style.maxHeight = "100px"; // Adjust the maximum height of each image as needed
+      itemImageContainer.appendChild(img);
+    });
 
     const submitButton = document.querySelector(".btn-primary");
     submitButton.textContent = "Save Edit";
@@ -163,31 +199,41 @@ document.addEventListener("DOMContentLoaded", function () {
       price: document.getElementById("Price").value,
       discount: document.getElementById("Discount").value,
       availableQuantity: document.getElementById("Quantity").value,
-      img: "",
+      img: [],
     };
 
     const imgInput = document.getElementById("img");
-    if (imgInput.files.length > 0) {
-      const imgFile = imgInput.files[0];
-      const reader = new FileReader();
+    const selectedImages = imgInput.files;
 
-      reader.onload = function (event) {
-        editedItem.img = event.target.result;
-        items[index] = editedItem;
-        localStorage.setItem("items", JSON.stringify(items));
+    if (selectedImages.length > 0) {
+      for (let i = 0; i < selectedImages.length; i++) {
+        const imgFile = selectedImages[i];
+        const reader = new FileReader();
 
-        populateTable();
+        reader.onload = function (event) {
+          const imgBase64 = event.target.result;
+          editedItem.img.push(imgBase64);
 
-        document.getElementById("addItemForm").reset();
-        const submitButton = document.querySelector(".btn-primary");
-        submitButton.textContent = "Submit";
-        submitButton.onclick = addToLocalStorage;
+          if (editedItem.img.length === selectedImages.length) {
+            items[index] = editedItem;
+            localStorage.setItem("items", JSON.stringify(items));
 
-        document.getElementById("img").value = "";
-        document.getElementById("itemImage").src = "";
-      };
+            populateTable();
 
-      reader.readAsDataURL(imgFile);
+            // Reset individual input fields
+            document.getElementById("Title").value = "";
+            document.getElementById("Category").value = "";
+            document.getElementById("Discount").value = "";
+            document.getElementById("Price").value = "";
+            document.getElementById("Quantity").value = "";
+
+            document.getElementById("img").value = "";
+            document.getElementById("itemImage").innerHTML = "";
+          }
+        };
+
+        reader.readAsDataURL(imgFile);
+      }
     } else {
       editedItem.img = items[index].img;
       items[index] = editedItem;
@@ -195,13 +241,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
       populateTable();
 
-      // document.getElementById("addItemForm").reset();
-      const submitButton = document.querySelector(".btn-primary");
-      submitButton.textContent = "Submit";
-      submitButton.onclick = addToLocalStorage;
+      // Reset individual input fields
+      document.getElementById("Title").value = "";
+      document.getElementById("Category").value = "";
+      document.getElementById("Discount").value = "";
+      document.getElementById("Price").value = "";
+      document.getElementById("Quantity").value = "";
 
       document.getElementById("img").value = "";
-      document.getElementById("itemImage").src = "";
+      document.getElementById("itemImage").innerHTML = "";
     }
   }
 

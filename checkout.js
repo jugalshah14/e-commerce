@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalItemPrice =
         parseFloat(product.discountedPrice) * parseInt(product.quantity);
       row.innerHTML = `
-                <td><img src="${product.image}" alt="${
+                <td><img src="${product.image[0]}" alt="${
         product.title
       }" width="50" height="50"></td>
                 <td>${product.title}</td>

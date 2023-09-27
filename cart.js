@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const discountedPrice = parseFloat(product.discountedPrice);
 
         cartItemDiv.innerHTML = `
-          <img src="${product.image}" alt="${product.title}">
+          <img src="${product.image[0]}" alt="${product.title}">
           <div>
               <h5>${product.title}</h5>
               <p><del>Original Price: ₹ ${originalPrice.toFixed(2)}</del></p>
