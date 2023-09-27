@@ -165,6 +165,7 @@ function createProductCards(products, container, customMessage) {
 
     cardDiv.innerHTML = `
                     <div class="card">
+                    <a href="product.html?id=${product.id}">
                         <img style="height: 400px;" src="${product.image[0]}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
@@ -226,6 +227,7 @@ function getFormDataFromLocalStorage() {
 }
 
 const formDataFromLocalStorage = getFormDataFromLocalStorage();
+localStorage.setItem("products", JSON.stringify(formDataFromLocalStorage));
 
 products.push(...formDataFromLocalStorage);
 filteredProducts = [...products];

@@ -13,6 +13,9 @@
 .card{
     border: none !important;
 }
+.card a{
+    color: black !important;
+}
 .cart-item {
     display: flex;
     margin: 10px;
@@ -58,6 +61,20 @@
 
 .pagination button.active {
     color: black;
+}
+
+.product-details{
+    display: grid;
+    margin-left: 100px;
+}
+
+.product-details h2{
+    margin:20px ;
+}
+.product-details p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
 }
 
 
