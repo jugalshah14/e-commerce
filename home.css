@@ -65,7 +65,6 @@
 
 .product-details{
     display: grid;
-    margin-left: 100px;
 }
 
 .product-details h2{
@@ -79,3 +78,16 @@
  .carousel-inner {
      transition-duration: 1s;
  }
+ .carousel-inner img{
+    height: 400px;
+ }
+
+ .btns{
+    display: flex;
+    text-align: center;
+    
+ }
+#prevButton,#nextButton{
+    height: 50px !important;
+    margin-top: 200px;
+}

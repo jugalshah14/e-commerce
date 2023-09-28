@@ -165,8 +165,8 @@ function createProductCards(products, container, customMessage) {
 
     cardDiv.innerHTML = `
                     <div class="card">
-                    <a href="product.html?id=${product.id}">
-                        <img style="height: 400px;" src="${product.image[0]}" class="card-img-top" alt="...">
+                    <a href="product.html?id=${product.title}">
+                        <img style="height: 400px;" src="${product.image[0]}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">

@@ -54,17 +54,19 @@
                     product.image.forEach((imageUrl, index) => {
                         imagesHtml += `
             <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                <img style="height: 600px; justify-content: center; display: grid; margin-left: 300px;" src="${imageUrl}" alt="${product.title}">
+                <img src="${imageUrl}" alt="${product.title}">
             </div>
         `;
                     });
 
                     productDetailContainer.innerHTML = `
         <div class="container">
-            <div id="product-detail-container" class="carousel slide" data-ride="carousel">
+            <div id="product-detail-container" class="carousel slide btns" data-ride="carousel">
+                <button id="prevButton" class="btn btn-primary">Previous</button>
                 <div class="carousel-inner">
                     ${imagesHtml}
                 </div>
+                <button id="nextButton" class="btn btn-primary">Next</button>
             </div>
             <div class="product-details">
                 <h2>${product.title}</h2>
@@ -75,7 +77,21 @@
             </div>
         </div>
     `;
+                const prevButton = document.getElementById("prevButton");
+                const nextButton = document.getElementById("nextButton");
 
+                // Add event listeners to the buttons
+                prevButton.addEventListener("click", () => {
+                    // Trigger the carousel to move to the previous image
+                    const carousel = new bootstrap.Carousel(document.getElementById('product-detail-container'));
+                    carousel.prev();
+                });
+
+                nextButton.addEventListener("click", () => {
+                    // Trigger the carousel to move to the next image
+                    const carousel = new bootstrap.Carousel(document.getElementById('product-detail-container'));
+                    carousel.next();
+                });
                     const addToCartBtn = document.querySelector(".addToCartBtn");
                     addToCartBtn.addEventListener("click", () => {
                         addToCart(product, addToCartBtn, "Product added to cart", discountedPrice);
