@@ -172,8 +172,8 @@ function createProductCards(products, container, customMessage) {
                             <p class="card-text">
                                 <del>Price: ₹ ${originalPrice}</del><br>
                                 Discounted Price: ₹ ${discountedPrice}
-                                <p>Quantity: ${product.availableQuantity}</p>
                             </p>
+                            <p>Quantity: ${product.availableQuantity}</p>
                             <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
                         </div>
                     </div>

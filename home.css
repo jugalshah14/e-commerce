@@ -1,23 +1,94 @@
-.container{
-    margin-top: 30px;
-    margin-bottom: 50px; 
-}
-.input-group{
-    margin-top: 100px;
-}
-#sort-container{
-    margin-top:30px;
-    margin-bottom: 30px;
-    text-align: end;
-}
-.card{
-    border: none !important;
-}
-.card a{
-    color: black !important;
+.navbar {
+    background-color: #333;
+    color: white;
 }
 
-.buttons{
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.navbar-brand img:hover {
+    opacity: 0.8;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-right: 20px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Style the search input */
+#search-input {
+    border-radius: 25px;
+    /* Rounded search input */
+    padding: 10px;
+}
+
+/* Style the category filter */
+#CategoryFilter {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Style the sort dropdown */
+#sort-dropdown {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+/* Style the product cards */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.card-text {
+    color: black;
+    font-size: 1rem;
+}
+p{
+    color: black;
+}
+a {
+  text-decoration: none;
+}
+/* Style the Add to Cart button */
+.addToCartBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.addToCartBtn:hover {
+    background-color: #0056b3;
+}
+
+.buttons {
     display: flex;
     justify-content: space-between;
 }
@@ -35,4 +106,3 @@
 .pagination button.active {
     color: black;
 }
-

@@ -1,0 +1,101 @@
+/* Apply some basic styles to the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Style the navigation bar */
+.navbar {
+    background-color: #333;
+    color: #fff;
+}
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.navbar-brand img:hover {
+    opacity: 0.8;
+}
+
+/* Style the navigation links */
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Style the checkout container */
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the headings */
+h1,
+h2 {
+    color: #333;
+}
+
+/* Style the form */
+form {
+    margin-top: 20px;
+}
+
+/* Style the form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style the form inputs and buttons */
+.form-control {
+    margin-bottom: 10px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Style the table */
+.table {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Style table headers */
+.table th {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Style table rows */
+.table td {
+    vertical-align: middle;
+}
+
+/* Style the shipping info dialog */
+.modal-content {
+    border-radius: 0;
+}
+
+.modal-title {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style the footer */
+.modal-footer {
+    justify-content: center;
+}
+
+/* Add some padding to the top of the page to accommodate the fixed navbar */
+body {
+    padding-top: 70px;
+}

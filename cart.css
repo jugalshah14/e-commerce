@@ -1,31 +1,140 @@
+/* Add some background and text color to the body */
+body {
+    background-color: #f7f7f7;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the navbar */
+.navbar {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+}
+.navbar-brand img:hover {
+    opacity: 0.8;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Style the cart container */
+.cart-container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 30px;
+}
+
+/* Style the individual cart items */
 .cart-item {
     display: flex;
     margin: 10px;
     border: 1px solid #ccc;
     padding: 10px;
+    background-color: #fff;
 }
 
 .cart-item img {
     width: 100px;
     height: auto;
     margin-right: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-.total-price {
-    margin: 50px;
+.cart-item h5 {
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 
-#total-items {
-    margin: 50px;
+.cart-item p {
+    font-size: 14px;
+    margin: 0;
 }
 
+/* Style the quantity buttons and input */
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity button {
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.quantity button:hover {
+    background-color: black;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 10px;
+    padding: 5px;
+}
+
+/* Style the remove button */
+.removeBtn {
+    background-color: #343a40;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.removeBtn:hover {
+    background-color: #e04111;
+}
+
+/* Style the total price and checkout button */
+.total-price,
+#total-items,
 #total-discounted-price {
-    margin: 50px;
+    font-size: 18px;
+    font-weight: bold;
 }
 
-.empty-cart-message {
-    margin: 50px;
-}
 .checkout {
-    margin: 0px 50px;
+    margin-top: 20px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.checkout:hover {
+    background-color: #e04111;
 }
