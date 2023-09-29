@@ -15,7 +15,6 @@
  }
 
  label {
-
      font-size: 20px;
  }
 
@@ -41,14 +40,10 @@
      display: flex;
      flex-wrap: nowrap;
      overflow-x: auto;
-     /* Allow horizontal scrolling for multiple images */
  }
 
  .img-container img {
      max-width: 50px;
-     /* Adjust the maximum width of each image */
      max-height: 50px;
-     /* Adjust the maximum height of each image */
      margin-right: 5px;
-     /* Adjust the spacing between images */
  }
