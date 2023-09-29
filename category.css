@@ -5,7 +5,6 @@ body {
     padding: 0;
 }
 
-/* Navbar */
 .navbar {
     background-color: #333;
     color: white;
@@ -30,7 +29,6 @@ body {
     text-decoration: underline;
 }
 
-/* Container */
 .container {
     background-color: white;
     padding: 20px;
@@ -44,7 +42,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Form */
 .form-group label {
     font-weight: bold;
 }
@@ -62,12 +59,10 @@ input[type="file"] {
     display: none;
 }
 
-/* Image Display */
 #selectedImage {
     margin-top: 10px;
 }
 
-/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -89,7 +84,6 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Buttons */
 .btn-primary {
     background-color: #007bff;
     color: white;

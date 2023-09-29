@@ -22,28 +22,26 @@
     text-decoration: underline;
 }
 
-/* Style the search input */
 #search-input {
     border-radius: 25px;
-    /* Rounded search input */
     padding: 10px;
 }
 
-/* Style the category filter */
 #CategoryFilter {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
 }
 
-/* Style the sort dropdown */
 #sort-dropdown {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
 }
+#sort-container{
+    text-align: end;
+}
 
-/* Style the product cards */
 .card {
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -73,7 +71,6 @@ p{
 a {
   text-decoration: none;
 }
-/* Style the Add to Cart button */
 .addToCartBtn {
     background-color: #007bff;
     color: white;
