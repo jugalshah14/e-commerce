@@ -108,7 +108,7 @@ nextPageButton.addEventListener("click", () => {
     updatePaginationUI(filteredProducts, paginationContainer);
   }
 });
-
+6;
 const products = [];
 
 const productContainer = document.getElementById("product-container");
@@ -165,7 +165,7 @@ function createProductCards(products, container, customMessage) {
 
     cardDiv.innerHTML = `
                     <div class="card">
-                    <a href="product.html?id=${product.title}">
+                    <a href="product.html?id=${product.id}">
                         <img style="height: 400px;" src="${product.image[0]}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>

@@ -42,10 +42,9 @@
         // Retrieve the products array from local storage
         const products = JSON.parse(localStorage.getItem("products")) || [];
         // Find the product with the matching ID from the products array
+
         const product = products.find(p => p.id === productId);
-        const discountedPrice = Math.round(
-                product.price * (1 - product.discount / 100)
-            );
+        const discountedPrice = Math.round(product ? (product.price * (1 - product.discount / 100)) : 0);
 
             // Display the product details on the page
             const productDetailContainer = document.getElementById('product-detail-container');
@@ -82,7 +81,6 @@
 
                 // Add event listeners to the buttons
                 prevButton.addEventListener("click", () => {
-                    // Trigger the carousel to move to the previous image
                     const carousel = new bootstrap.Carousel(document.getElementById('product-detail-container'));
                     carousel.prev();
                 });
