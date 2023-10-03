@@ -1,3 +1,12 @@
+
+.main-body{
+    padding: 30px;
+}
+
+.side-bar{
+    padding: 30px;
+}
+
 .navbar {
     background-color: #333;
     color: white;
@@ -22,15 +31,92 @@
     text-decoration: underline;
 }
 
+#toast-container {
+    margin-top: 80px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 300px;
+}
+
+/* Toast */
+.toast {
+    position: relative;
+    background-color: #333;
+    color: black;
+    padding: 30px;
+    border-radius: 5px;
+    margin: 10px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.toast.show {
+    display: block;
+}
+
+.toast-message {
+    margin-right: 30px;
+}
+
+.toast-close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 #search-input {
     border-radius: 25px;
     padding: 10px;
+    border-color: #343a40;
 }
 
 #CategoryFilter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Style for radio buttons */
+#CategoryFilter input[type="radio"] {
+    display: none;
+    /* Hide the default radio button */
+}
+
+/* Style for radio button labels */
+#CategoryFilter label {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
     border: 1px solid #ccc;
+    cursor: pointer;
     border-radius: 5px;
-    padding: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for the selected radio button label */
+#CategoryFilter input[type="radio"]:checked+ label {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #343a40;
+}
+
+/* Hover effect for labels */
+#CategoryFilter label:hover {
+    background-color: #ddd;
+}
+.vl {
+    border: 1px solid #343a40;
+    height: auto;
 }
 
 #sort-dropdown {
@@ -40,11 +126,12 @@
 }
 #sort-container{
     text-align: end;
+    margin: 30px;
 }
 
 .card {
     border: 1px solid #ddd;
-    border-radius: 10px;
+    border-radius: 10%;
     margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
 }
@@ -52,6 +139,10 @@
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+.card img{
+    object-fit: contain;
+    height: 200px;
 }
 
 .card-title {
@@ -100,6 +191,53 @@ a {
     color: grey;
 }
 
+.category{
+    margin-top: 50px;
+}
+
 .pagination button.active {
     color: black;
+}
+.price-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.price-slider label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#price-range {
+    margin-top: 20px;
+    width: 80%;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #ddd;
+    border-radius: 5px;
+}
+
+#price-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #343a40;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#price-range-value {
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#price-range:focus,
+#price-range:active {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }

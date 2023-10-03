@@ -3,41 +3,67 @@ const itemsPerPage = 8;
 let currentPage = 1;
 let filteredProducts = [];
 
-function populateCategoryDropdown() {
-  const categoryDropdown = document.getElementById("CategoryFilter");
-  const categories = JSON.parse(localStorage.getItem("categories")) || [];
-
-  categoryDropdown.innerHTML = "";
-
-  const defaultOption = document.createElement("option");
-  defaultOption.value = "";
-  defaultOption.textContent = "All Categories";
-  categoryDropdown.appendChild(defaultOption);
-
-  categories.forEach((category) => {
-    const option = document.createElement("option");
-    option.value = category.name;
-    option.textContent = category.name;
-    categoryDropdown.appendChild(option);
-  });
+function updateCartBadge() {
+  const cartBadge = document.getElementById("cart-badge");
+  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+  const numItemsInCart = cartItems.length;
+  cartBadge.textContent = numItemsInCart.toString();
 }
-function filterProductsByCategory() {
-  const selectedCategory = document.getElementById("CategoryFilter").value;
 
-  if (selectedCategory === "") {
-    filteredProducts = products;
+// Add this function to your addToCart function to trigger badge update
+function addToCart(product, button, customMessage, discountedPrice) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const isProductInCart = cart.some((item) => item.id === product.id);
+
+  if (isProductInCart) {
+    showToast("This product is already in your cart.");
   } else {
-    filteredProducts = products.filter(
-      (product) =>
-        product.category.toLowerCase() === selectedCategory.toLowerCase()
-    );
+    const cartItem = {
+      ...product,
+      discountedPrice: discountedPrice,
+      quantity: 1,
+    };
+
+    cart.push(cartItem);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showToast(customMessage || "Product added to cart");
+
+    button.disabled = true;
+    // Update the cart badge after adding a product
+    updateCartBadge();
   }
-
-  currentPage = 1;
-
-  displayProductsOnPage(filteredProducts, productContainer, currentPage);
-  updatePaginationUI(filteredProducts, paginationContainer);
 }
+function showToast(message) {
+  const toastContainer = document.getElementById("toast-container");
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.innerHTML = `
+    <div class="toast-message">${message}</div>
+    <button class="toast-close-btn">&times;</button>
+  `;
+
+  const closeBtn = toast.querySelector(".toast-close-btn");
+  closeBtn.addEventListener("click", () => {
+    toastContainer.removeChild(toast);
+  });
+
+  toastContainer.appendChild(toast);
+
+  setTimeout(() => {
+    toast.classList.add("show");
+  }, 100);
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => {
+      toastContainer.removeChild(toast);
+    }, 300);
+  }, 2000); // Adjust the duration as needed (in milliseconds)
+}
+
+// Call the updateCartBadge function to initialize the badge
+updateCartBadge();
 
 function performSearch() {
   const searchInput = document.getElementById("search-input");
@@ -60,9 +86,6 @@ function displayProductsOnPage(products, container, page) {
   container.innerHTML = "";
   createProductCards(productsToDisplay, container, "Product added to cart");
 }
-
-const categoryDropdown = document.getElementById("CategoryFilter");
-categoryDropdown.addEventListener("change", filterProductsByCategory);
 
 const prevPageButton = document.getElementById("prev-page");
 const nextPageButton = document.getElementById("next-page");
@@ -166,7 +189,7 @@ function createProductCards(products, container, customMessage) {
     cardDiv.innerHTML = `
                     <div class="card">
                     <a href="product.html?id=${product.id}">
-                        <img style="height: 400px;" src="${product.image[0]}" class="card-img-top">
+                        <img src="${product.image[0]}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">
@@ -191,26 +214,96 @@ function createProductCards(products, container, customMessage) {
   container.appendChild(row);
 }
 
-function addToCart(product, button, customMessage, discountedPrice) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const priceRangeInput = document.getElementById("price-range");
+const priceRangeValue = document.getElementById("price-range-value");
 
-  const isProductInCart = cart.some((item) => item.id === product.id);
+let minPrice = 0;
+let maxPrice = 1000;
 
-  if (isProductInCart) {
-    alert("This product is already in your cart.");
+// Update the price range display when the slider value changes
+priceRangeInput.addEventListener("input", () => {
+  const selectedValue = priceRangeInput.value;
+  priceRangeValue.textContent = `₹ ${selectedValue}`;
+
+  minPrice = 0;
+  maxPrice = parseInt(selectedValue);
+
+  // Filter products automatically as the user moves the slider
+  filteredProducts = products.filter((product) => {
+    const discountedPrice = Math.round(
+      product.price * (1 - product.discount / 100)
+    );
+    return discountedPrice >= minPrice && discountedPrice <= maxPrice;
+  });
+
+  currentPage = 1;
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
+});
+function populateCategoryRadioButtons() {
+  const categoryFilter = document.getElementById("CategoryFilter");
+  const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+  categoryFilter.innerHTML = "";
+
+  // Create the "All Categories" radio button
+  const allCategoriesRadio = document.createElement("input");
+  allCategoriesRadio.type = "radio";
+  allCategoriesRadio.name = "category";
+  allCategoriesRadio.id = "allCategories";
+  allCategoriesRadio.value = "";
+  allCategoriesRadio.checked = true;
+  const allCategoriesLabel = document.createElement("label");
+  allCategoriesLabel.htmlFor = "allCategories";
+  allCategoriesLabel.textContent = "All Categories";
+
+  categoryFilter.appendChild(allCategoriesRadio);
+  categoryFilter.appendChild(allCategoriesLabel);
+
+  // Create radio buttons for each category
+  categories.forEach((category) => {
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = "category";
+    radio.id = category.name;
+    radio.value = category.name;
+    const label = document.createElement("label");
+    label.htmlFor = category.name;
+    label.textContent = category.name;
+
+    categoryFilter.appendChild(radio);
+    categoryFilter.appendChild(label);
+  });
+}
+
+function filterProductsByCategory() {
+  const selectedCategory = document.querySelector(
+    "input[name='category']:checked"
+  ).value;
+
+  if (selectedCategory === "") {
+    filteredProducts = products;
   } else {
-    const cartItem = {
-      ...product,
-      discountedPrice: discountedPrice,
-      quantity: 1,
-    };
-
-    cart.push(cartItem);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(customMessage || "Product added to cart");
-
-    button.disabled = true;
+    filteredProducts = products.filter(
+      (product) =>
+        product.category.toLowerCase() === selectedCategory.toLowerCase()
+    );
   }
+
+  currentPage = 1;
+
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
+}
+
+const categoryFilter = document.getElementById("CategoryFilter");
+categoryFilter.addEventListener("change", filterProductsByCategory);
+
+function filterProductsByPrice() {
+  minPrice = 0;
+  maxPrice = 1000;
+  priceRangeInput.value = 500;
+  priceRangeValue.textContent = "₹ 500"; // Reset the display
 }
 
 function getFormDataFromLocalStorage() {
@@ -231,7 +324,7 @@ localStorage.setItem("products", JSON.stringify(formDataFromLocalStorage));
 
 products.push(...formDataFromLocalStorage);
 filteredProducts = [...products];
-populateCategoryDropdown();
+populateCategoryRadioButtons();
 createProductCards(filteredProducts, productContainer, "Product added to cart");
 displayProductsOnPage(filteredProducts, productContainer, currentPage);
 updatePaginationUI(filteredProducts, paginationContainer);
