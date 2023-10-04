@@ -33,14 +33,17 @@
                 <h2>Filter</h2>
                 <div class="category">
                     <h4>Category</h4>
-                    <div id="CategoryFilter">
-                        <input type="radio" name="category" id="allCategories" value="" checked>
-                        <label for="allCategories">All Categories</label>
+                <div id="CategoryFilter">
+                    <div>
+                    <input type="checkbox" id="allCategories" value="" checked>
+                    <label for="allCategories">All Categories</label>
                     </div>
+                </div>
+
                     <div class="price-slider">
                         <label for="price-range">Price Range:</label>
                         <input type="range" id="price-range" min="0" max="1000" step="5">
-                        <span id="price-range-value"></span>
+                        <span id="price-range-value">0</span>
                     </div>
                 </div>
             </div>

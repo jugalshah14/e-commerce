@@ -217,15 +217,14 @@ function createProductCards(products, container, customMessage) {
 const priceRangeInput = document.getElementById("price-range");
 const priceRangeValue = document.getElementById("price-range-value");
 
-let minPrice = 0;
-let maxPrice = 1000;
-
+priceRangeInput.value = 0;
 // Update the price range display when the slider value changes
 priceRangeInput.addEventListener("input", () => {
   const selectedValue = priceRangeInput.value;
   priceRangeValue.textContent = `₹ ${selectedValue}`;
 
   minPrice = 0;
+  priceRangeInput.max = findMaxPriceInLocalStorage();
   maxPrice = parseInt(selectedValue);
 
   // Filter products automatically as the user moves the slider
@@ -240,53 +239,53 @@ priceRangeInput.addEventListener("input", () => {
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 });
-function populateCategoryRadioButtons() {
+priceRangeInput.max = findMaxPriceInLocalStorage();
+
+function populateCategoryCheckboxes() {
   const categoryFilter = document.getElementById("CategoryFilter");
   const categories = JSON.parse(localStorage.getItem("categories")) || [];
 
   categoryFilter.innerHTML = "";
 
-  // Create the "All Categories" radio button
-  const allCategoriesRadio = document.createElement("input");
-  allCategoriesRadio.type = "radio";
-  allCategoriesRadio.name = "category";
-  allCategoriesRadio.id = "allCategories";
-  allCategoriesRadio.value = "";
-  allCategoriesRadio.checked = true;
+  // Create the "All Categories" checkbox
+  const allCategoriesCheckbox = document.createElement("input");
+  allCategoriesCheckbox.type = "checkbox";
+  allCategoriesCheckbox.id = "allCategories";
+  allCategoriesCheckbox.value = "";
+  allCategoriesCheckbox.checked = true;
   const allCategoriesLabel = document.createElement("label");
   allCategoriesLabel.htmlFor = "allCategories";
   allCategoriesLabel.textContent = "All Categories";
 
-  categoryFilter.appendChild(allCategoriesRadio);
+  categoryFilter.appendChild(allCategoriesCheckbox);
   categoryFilter.appendChild(allCategoriesLabel);
 
-  // Create radio buttons for each category
+  // Create checkboxes for each category
   categories.forEach((category) => {
-    const radio = document.createElement("input");
-    radio.type = "radio";
-    radio.name = "category";
-    radio.id = category.name;
-    radio.value = category.name;
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = category.name;
+    checkbox.value = category.name;
     const label = document.createElement("label");
     label.htmlFor = category.name;
     label.textContent = category.name;
 
-    categoryFilter.appendChild(radio);
+    categoryFilter.appendChild(checkbox);
     categoryFilter.appendChild(label);
   });
 }
 
 function filterProductsByCategory() {
-  const selectedCategory = document.querySelector(
-    "input[name='category']:checked"
-  ).value;
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  const selectedCategories = Array.from(checkboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
 
-  if (selectedCategory === "") {
+  if (selectedCategories.length === 0 || selectedCategories.includes("")) {
     filteredProducts = products;
   } else {
-    filteredProducts = products.filter(
-      (product) =>
-        product.category.toLowerCase() === selectedCategory.toLowerCase()
+    filteredProducts = products.filter((product) =>
+      selectedCategories.includes(product.category.toLowerCase())
     );
   }
 
@@ -296,14 +295,36 @@ function filterProductsByCategory() {
   updatePaginationUI(filteredProducts, paginationContainer);
 }
 
+// Add an event listener to call the filter function
 const categoryFilter = document.getElementById("CategoryFilter");
 categoryFilter.addEventListener("change", filterProductsByCategory);
 
-function filterProductsByPrice() {
-  minPrice = 0;
-  maxPrice = 1000;
-  priceRangeInput.value = 500;
-  priceRangeValue.textContent = "₹ 500"; // Reset the display
+function findMaxPriceInLocalStorage() {
+  // Get the products from local storage
+  const productsJSON = localStorage.getItem("products");
+
+  if (productsJSON) {
+    // Parse the JSON data into an array
+    const products = JSON.parse(productsJSON);
+
+    if (Array.isArray(products) && products.length > 0) {
+      // Initialize maxPrice with the price of the first product
+      let maxPrice = products[0].price;
+
+      // Iterate through the products and update maxPrice if a higher price is found
+      for (const product of products) {
+        if (product.price > maxPrice) {
+          maxPrice = product.price;
+        }
+      }
+
+      return maxPrice;
+    } else {
+      return "No products found in local storage.";
+    }
+  } else {
+    return "Local storage is empty or 'products' key is not set.";
+  }
 }
 
 function getFormDataFromLocalStorage() {
@@ -324,7 +345,7 @@ localStorage.setItem("products", JSON.stringify(formDataFromLocalStorage));
 
 products.push(...formDataFromLocalStorage);
 filteredProducts = [...products];
-populateCategoryRadioButtons();
+populateCategoryCheckboxes();
 createProductCards(filteredProducts, productContainer, "Product added to cart");
 displayProductsOnPage(filteredProducts, productContainer, currentPage);
 updatePaginationUI(filteredProducts, paginationContainer);
