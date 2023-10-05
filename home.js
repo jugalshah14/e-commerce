@@ -1,7 +1,20 @@
 const paginationContainer = document.getElementById("pagination");
-const itemsPerPage = 8;
+let itemsPerPage = 8;
 let currentPage = 1;
 let filteredProducts = [];
+
+function updateItemsPerPage() {
+  if (window.innerWidth <= 768) {
+    // Adjust the screen width as needed
+    itemsPerPage = 4; // Change to 4 items per page for smaller screens
+  } else {
+    itemsPerPage = 8; // Revert to 8 items per page for larger screens
+  }
+}
+
+// Call the function initially and listen for window resize events
+updateItemsPerPage();
+window.addEventListener("resize", updateItemsPerPage);
 
 function updateCartBadge() {
   const cartBadge = document.getElementById("cart-badge");
@@ -131,7 +144,6 @@ nextPageButton.addEventListener("click", () => {
     updatePaginationUI(filteredProducts, paginationContainer);
   }
 });
-6;
 const products = [];
 
 const productContainer = document.getElementById("product-container");
@@ -162,6 +174,26 @@ function sortProducts() {
   updatePaginationUI(filteredProducts, paginationContainer);
 }
 
+// Get references to the icon and the right-side menu
+// Get references to the icon, the close button, and the right-side menu
+const icon = document.querySelector(".menu-icon");
+const menu = document.getElementById("right-menu");
+const closeButton = document.getElementById("close-button");
+
+// Function to open the menu
+function openMenu() {
+  menu.classList.add("show");
+}
+
+// Function to close the menu
+function closeMenu() {
+  menu.classList.remove("show");
+}
+
+// Add click event listeners to the icon and the close button
+icon.addEventListener("click", openMenu);
+closeButton.addEventListener("click", closeMenu);
+
 sortDropdown.addEventListener("change", sortProducts);
 
 sortProducts();
@@ -170,6 +202,7 @@ function createProductCards(products, container, customMessage) {
   let row = document.createElement("div");
   row.className = "row";
   let cardCount = 0;
+  container.innerHTML = "";
 
   products.forEach((product) => {
     if (cardCount % 4 === 0) {
@@ -179,7 +212,7 @@ function createProductCards(products, container, customMessage) {
     }
 
     const cardDiv = document.createElement("div");
-    cardDiv.className = "col-3";
+    cardDiv.className = "col-lg-3 col-md-6 col-sm-6";
 
     const originalPrice = product.price;
     const discountedPrice = Math.round(
@@ -247,20 +280,6 @@ function populateCategoryCheckboxes() {
 
   categoryFilter.innerHTML = "";
 
-  // Create the "All Categories" checkbox
-  const allCategoriesCheckbox = document.createElement("input");
-  allCategoriesCheckbox.type = "checkbox";
-  allCategoriesCheckbox.id = "allCategories";
-  allCategoriesCheckbox.value = "";
-  allCategoriesCheckbox.checked = true;
-  const allCategoriesLabel = document.createElement("label");
-  allCategoriesLabel.htmlFor = "allCategories";
-  allCategoriesLabel.textContent = "All Categories";
-
-  categoryFilter.appendChild(allCategoriesCheckbox);
-  categoryFilter.appendChild(allCategoriesLabel);
-
-  // Create checkboxes for each category
   categories.forEach((category) => {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -280,7 +299,6 @@ function filterProductsByCategory() {
   const selectedCategories = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.value);
-
   if (selectedCategories.length === 0 || selectedCategories.includes("")) {
     filteredProducts = products;
   } else {

@@ -2,6 +2,13 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
 }
+.checkout-body{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.bottom-nav{
+    display: none !important;
+}
 
 .navbar {
     background-color: #333;
@@ -81,7 +88,24 @@ label {
 .modal-footer {
     justify-content: center;
 }
-
-body {
-    padding-top: 70px;
+@media only screen and (max-width: 768px) {
+    .top-nav {
+            display: none !important;
+        }
+    
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+    
+        .bottom-nav {
+            display: flex !important;
+            flex-direction: column;
+        }
+                 form {
+                     justify-content: space-between;
+                     margin-top: 0 !important;
+                 }
 }

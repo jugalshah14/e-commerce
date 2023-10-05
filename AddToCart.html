@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark top-nav">
         <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                 <a class="navbar-brand" href="home.html">
@@ -25,17 +25,28 @@
             </form>
         </div>
     </nav>
-    <h1 style="margin-top: 100px;margin-left: 30px">Your Shopping Cart</h1>
-    
-    <div class="cart-container" id="cart">
-        
+    <div class="cart-body">
+    <h1>Your Shopping Cart</h1>   
+    <div class="cart-container" id="cart">      
     </div>
+    <div class="cart-text">
     <div id="total-price" class="total-price"></div>
     <div id="total-discounted-price"></div>
     <p id="total-items">Total Items: <span id="item-count">0</span></p>
     <div>
         <a href="checkout.html" class="btn btn-dark checkout">Check-out</a>
     </div>
+    </div>
+    </div>
+    <nav class="navbar fixed-bottom navbar-dark bg-dark bottom-nav">
+        <form>
+            <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+            <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+            <a href="form.html"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+            <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
+            <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+        </form>
+    </nav>
 
     <script src="./cart.js"></script>
 </body>

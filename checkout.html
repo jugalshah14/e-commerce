@@ -10,7 +10,7 @@
         <title>Check-Out</title>
     </head>
     <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark top-nav">
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                     <a class="navbar-brand" href="home.html">
@@ -24,12 +24,11 @@
                 </form>
             </div>
         </nav>
-        <div class="container">
+        <div class="container checkout-body">
             <h1 >Checkout</h1>
             <div id="checkout-details"></div>
-        </div>
-        <div class="container mt-5">
-        <div class="container mt-5">
+        
+        <div class="">
             <form id="shipping-info-form">
                 <h2>Shipping Information</h2>
                 <div class="form-row">
@@ -59,7 +58,7 @@
                         <label for="zip">ZIP Code</label>
                         <input type="number" class="form-control" id="zip" name="zip">
                     </div>
-                </div>
+                    </div>
         
                 <h2>Payment Information</h2>
                 <div class="form-group">
@@ -74,11 +73,19 @@
                     <div class="form-group col-md-6">
                         <label for="cvv">CVV</label>
                         <input type="number" class="form-control" id="cvv" name="cvv">
-                    </div>
-                </div>
-        
+                    </div>       
                 <button type="submit" id="place-order-button" class="btn btn-primary">Place Order</button>
             </form>
+            </div>
+            <nav class="navbar fixed-bottom navbar-dark bg-dark bottom-nav">
+                <form>
+                    <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+                    <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
+                    <a href="form.html"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
+                    <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
+                        <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                </form>
+            </nav>
     </body>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

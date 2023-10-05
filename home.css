@@ -30,6 +30,9 @@
 .navbar a:hover {
     text-decoration: underline;
 }
+.bottom-nav{
+    display: none !important;
+}
 
 #toast-container {
     margin-top: 80px;
@@ -76,6 +79,17 @@
     border-radius: 25px;
     padding: 10px;
     border-color: #343a40;
+}
+
+.fa-filter{
+    display: none !important; 
+}
+
+.categorymobile{
+    display: none;
+}
+#right-menu{
+    display: none;
 }
 
 #CategoryFilter {
@@ -239,4 +253,72 @@ a {
 #price-range:active {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media only screen and (max-width: 768px){
+    .top-nav{
+        display: none !important;
+    }
+    .bottom-nav{
+        display: flex !important;
+        flex-direction: column;    
+    }
+         form {
+             justify-content: space-between;
+             margin-bottom: 0 !important;
+         }
+    .side-bar{
+        padding: 0;
+        display: none !important;
+    }
+    .vl{
+        display: none !important;
+    }
+    .row{
+        margin-bottom: 50px;
+        padding: 0%;
+    }
+    .input-group{
+        gap: 20px;
+    }
+    #search-input{
+        width: 70%;
+    }
+    #sort-container{
+        margin-bottom: 0px;
+    }
+    .fa-filter{
+        display: block!important ;
+    }
+        .categorymobile {
+            display: block;
+        }
+        .menu-icon {
+            cursor: pointer;
+            border: 1px solid #343a40 !important;
+            border-radius: 50%;
+            padding: 10px;
+        }
+    
+        /* Style the hidden right-side menu */
+        #right-menu {
+            
+            display: block;
+            position: fixed;
+            right: -300px;
+            /* Adjust as needed to hide it off-screen */
+            width: 250px;
+            /* Adjust the width as needed */
+            height: auto;
+            background-color: #fff;
+            /* Background color for the menu */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease-in-out;
+            z-index: 2000;
+        }
+    
+        /* Style for the visible right-side menu */
+        #right-menu.show {
+            right: 0;
+        }
 }

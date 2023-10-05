@@ -28,18 +28,21 @@ if (product) {
   productDetailContainer.innerHTML = `
         <div class="container">
             <div id="product-detail-container" class="carousel slide btns" data-ride="carousel">
-                <button id="prevButton" class="btn btn-primary">Previous</button>
+\                <i class="fa fa-arrow-left" id="prevButton" aria-hidden="true"></i>
                 <div class="carousel-inner">
                     ${imagesHtml}
                 </div>
-                <button id="nextButton" class="btn btn-primary">Next</button>
+                <i class="fa fa-arrow-right" id="nextButton" aria-hidden="true"></i>
             </div>
             <div class="product-details">
                 <h2>${product.title}</h2>
                 <del><p>Price: ₹ ${product.price}</p></del>
                 <p>Discount: ₹ ${discountedPrice}</p>
                 <p>Quantity: ${product.availableQuantity}</p>
-                <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
+            </div>
+            <div class="butns">
+            <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
+            <a href="checkout.html" class="btn btn-dark checkoutBtn">Check Out</a>
             </div>
         </div>
     `;

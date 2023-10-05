@@ -1,3 +1,8 @@
+.productbody{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 .navbar {
     background-color: #333;
     color: white;
@@ -21,6 +26,9 @@
 .navbar a:hover {
     text-decoration: underline;
 }
+.bottom-nav{
+    display: none !important;
+}
 
 .carousel-inner {
     transition-duration: 1s;
@@ -43,16 +51,9 @@
 #nextButton {
     height: 50px !important;
     margin-top: 300px;
-    background-color: #007bff;
-    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-#prevButton:hover,
-#nextButton:hover {
-    background-color: #0056b3;
 }
 
 .product-details {
@@ -70,4 +71,39 @@
 .product-details p {
     margin: 0;
     font-size: 16px;
+}
+.butns{
+    display: flex;
+    gap: 30px;
+}
+.addToCartBtn{
+    margin-top: 50px;
+    width: 50%;
+}
+.checkoutBtn{
+    margin-top: 50px;
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px){
+    .top-nav{
+        display: none !important;
+    }
+    .bottom-nav{
+        display: flex !important;
+        flex-direction: column;
+    }
+    .carousel-inner img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+                #prevButton,
+                #nextButton {
+                    height: 50px !important;
+                    margin-top: 150px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
 }

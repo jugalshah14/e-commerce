@@ -3,9 +3,14 @@ body {
     color: #333;
     font-family: Arial, sans-serif;
 }
+.bottom-nav{
+    display: none !important;
+}
+.cart-body{
+    padding: 30px;
+}
 
 .navbar {
-    background-color: #000;
     color: #fff;
     padding: 10px 0;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
@@ -27,6 +32,9 @@ body {
 
 .navbar a:hover {
     text-decoration: underline;
+}
+.cart-text{
+    margin: 20px;
 }
 
 .cart-container {
@@ -130,4 +138,34 @@ body {
 
 .checkout:hover {
     background-color: #e04111;
+}
+
+@media only screen and (max-width: 768px){
+    .cart-body{
+        padding: 20px;
+        margin-bottom: 50px;
+    }
+    .top-nav{
+        display: none !important;
+    }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+         .bottom-nav {
+            display: flex !important;
+             flex-direction: column;
+         }
+    .checkout{
+        width: 100%;
+    }
+    h1{
+        font-size: 2rem !important;
+    }
+    form{
+        justify-content: space-between;
+        margin-bottom: 0 !important;
+    }
 }
