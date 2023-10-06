@@ -1,8 +1,9 @@
-body {
-    background-color: #f7f7f7;
-    color: #333;
-    font-family: Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+    font-family: 'Montserrat';
 }
+
 .bottom-nav{
     display: none !important;
 }
@@ -106,7 +107,7 @@ body {
     background-color: #343a40;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     padding: 5px 10px;
     font-size: 14px;
     cursor: pointer;
@@ -129,8 +130,8 @@ body {
     background-color: #ff5722;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
+    border-radius: 25px !important;
+    padding: 10px 20px !important;
     font-size: 20px;
     text-decoration: none;
     transition: background-color 0.3s;

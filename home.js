@@ -227,18 +227,17 @@ function createProductCards(products, container, customMessage) {
                             <h5 class="card-title">${product.title}</h5>
                             <p class="card-text">
                                 <del>Price: ₹ ${originalPrice}</del><br>
-                                Discounted Price: ₹ ${discountedPrice}
-                            </p>
-                            <p>Quantity: ${product.availableQuantity}</p>
-                            <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
+                               <b> Discounted Price: ₹ ${discountedPrice}</b>
+                            </p>                          
+                            
                         </div>
                     </div>
                 `;
 
-    const addToCartBtn = cardDiv.querySelector(".addToCartBtn");
-    addToCartBtn.addEventListener("click", () => {
-      addToCart(product, addToCartBtn, customMessage, discountedPrice);
-    });
+    // const addToCartBtn = cardDiv.querySelector(".addToCartBtn");
+    // addToCartBtn.addEventListener("click", () => {
+    //   addToCart(product, addToCartBtn, customMessage, discountedPrice);
+    // });
 
     row.appendChild(cardDiv);
     cardCount++;

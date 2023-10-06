@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-.main-body{
+* {
+    font-family: 'Montserrat';
+}
+
+.main-body {
     padding: 30px;
 }
 
-.side-bar{
+.side-bar {
     padding: 30px;
 }
 
@@ -30,7 +35,8 @@
 .navbar a:hover {
     text-decoration: underline;
 }
-.bottom-nav{
+
+.bottom-nav {
     display: none !important;
 }
 
@@ -81,14 +87,15 @@
     border-color: #343a40;
 }
 
-.fa-filter{
-    display: none !important; 
+.fa-filter {
+    display: none !important;
 }
 
-.categorymobile{
+.categorymobile {
     display: none;
 }
-#right-menu{
+
+#right-menu {
     display: none;
 }
 
@@ -127,6 +134,7 @@ input[type="checkbox"]:checked+label {
     color: #343a40;
     font-weight: bold;
 }
+
 .vl {
     border: 1px solid #343a40;
     height: auto;
@@ -137,14 +145,15 @@ input[type="checkbox"]:checked+label {
     border-radius: 5px;
     padding: 5px;
 }
-#sort-container{
+
+#sort-container {
     text-align: end;
     margin: 30px;
 }
 
 .card {
     border: 1px solid #ddd;
-    border-radius: 10%;
+    border-radius: 10% !important;
     margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
 }
@@ -153,7 +162,8 @@ input[type="checkbox"]:checked+label {
     transform: scale(1.05);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
-.card img{
+
+.card img {
     object-fit: contain;
     height: 200px;
 }
@@ -169,48 +179,61 @@ input[type="checkbox"]:checked+label {
     color: black;
     font-size: 1rem;
 }
-p{
+
+p {
     color: black;
 }
+
 a {
-  text-decoration: none;
-}
-.addToCartBtn {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
 }
 
-.addToCartBtn:hover {
-    background-color: #0056b3;
+.addToCartBtn {
+    background-color: #007481 !important;
+    color: white;
+    width: 50%;
+    border: none;
+    padding: 5px 20px !important;
+    border-radius: 25px !important;
+    border-color: none !important;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
 }
+
+#prev-page,
+#next-page {
+    background-color: #007481 !important;
+    border: none;
+    padding: 5px 20px !important;
+    border-radius: 25px !important;
+    border-color: none !important;
+}
+
 .pagination {
     justify-content: center;
     margin-top: 20px;
     gap: 10px;
 }
+
 .pagination button {
     background-color: white;
     border: none;
     color: grey;
 }
 
-.category{
+.category {
     margin-top: 50px;
 }
 
 .pagination button.active {
     color: black;
 }
+
 .price-slider {
     display: flex;
     flex-direction: column;
@@ -255,70 +278,116 @@ a {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-@media only screen and (max-width: 768px){
-    .top-nav{
+@media only screen and (max-width: 768px) {
+    .main-body {
+        padding: 10px;
+        margin-top: 20px;
+    }
+
+    .col-sm-6 {
+        width: 50% !important;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+    }
+
+    .top-nav {
         display: none !important;
     }
-    .bottom-nav{
+
+    .bottom-nav {
         display: flex !important;
-        flex-direction: column;    
+        flex-direction: column;
     }
-         form {
-             justify-content: space-between;
-             margin-bottom: 0 !important;
-         }
-    .side-bar{
+
+    form {
+        justify-content: space-between;
+        margin-bottom: 0 !important;
+    }
+
+    .side-bar {
         padding: 0;
         display: none !important;
     }
-    .vl{
+
+    .category {
+        margin-top: 0;
+    }
+
+    .vl {
         display: none !important;
     }
-    .row{
-        margin-bottom: 50px;
+
+    .row {
         padding: 0%;
+        margin-top: 10px !important;
     }
-    .input-group{
+
+    .input-group {
         gap: 20px;
     }
-    #search-input{
+
+    #search-input {
         width: 70%;
     }
-    #sort-container{
+
+    #sort-container {
         margin-bottom: 0px;
+        margin-top: 20px;
     }
-    .fa-filter{
-        display: block!important ;
+
+    .fa-filter {
+        display: block !important;
     }
-        .categorymobile {
-            display: block;
-        }
-        .menu-icon {
-            cursor: pointer;
-            border: 1px solid #343a40 !important;
-            border-radius: 50%;
-            padding: 10px;
-        }
-    
-        /* Style the hidden right-side menu */
-        #right-menu {
-            
-            display: block;
-            position: fixed;
-            right: -300px;
-            /* Adjust as needed to hide it off-screen */
-            width: 250px;
-            /* Adjust the width as needed */
-            height: auto;
-            background-color: #fff;
-            /* Background color for the menu */
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-            transition: right 0.3s ease-in-out;
-            z-index: 2000;
-        }
-    
-        /* Style for the visible right-side menu */
-        #right-menu.show {
-            right: 0;
-        }
+
+    .categorymobile {
+        display: block;
+    }
+
+    #CategoryFilter {
+        margin-top: 20px;
+        display: flex;
+        margin-bottom: 20px;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        align-items: flex-start;
+    }
+    .card img{
+        height: 100px;
+    }
+
+    .card-title{
+        font-size: 15px;
+    }
+
+    .card-text{
+        font-size: 11px;
+    }
+
+    .menu-icon {
+        cursor: pointer;
+        border: 1px solid #343a40 !important;
+        border-radius: 50%;
+        padding: 10px;
+    }
+         .buttons {
+             margin-bottom: 50px;
+         }
+
+
+    #right-menu {
+        display: block;
+        position: fixed;
+        right: -300px;
+        width: 250px;
+        height: auto;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease-in-out;
+        z-index: 2000;
+    }
+
+    #right-menu.show {
+        right: 0;
+    }
 }

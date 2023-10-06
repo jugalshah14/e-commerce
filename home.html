@@ -36,11 +36,11 @@
                 <h2>Filter</h2>
                 <div class="category">
                     <h4>Category</h4>
-                <div id="CategoryFilter">
+                <!-- <div id="CategoryFilter">
                     <div>
                     <input type="checkbox" id="allCategories" value="" checked>
                     </div>
-                </div>
+                </div> -->
                     <div class="price-slider">
                         <label for="price-range">Price Range:</label>
                         <input type="range" id="price-range" min="0" max="1000"  step="5">
@@ -52,14 +52,14 @@
         <div class="vl"></div>
         <div class="col-lg-9 col-md-9">
             <div class="main-body">
-                <!-- <div class="categorymobile">
+                <div class="categorymobile">
                 <div class="category">
                     <h4>Category</h4>
                     <div id="CategoryFilter">
                         <div>
                             <input type="checkbox" id="allCategories" value="" checked>
                         </div>
-                    </div></div></div> -->
+                    </div></div></div>
               <div class="input-group mb-3">
                     <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
                     <div class="menu-icon">
@@ -69,9 +69,11 @@
                     <div id="right-menu" class="hidden">
                         <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
                         <ul>
-                            <li><a href="#">Menu Item 1</a></li>
-                            <li><a href="#">Menu Item 2</a></li>
-                            <!-- Add more menu items as needed -->
+                            <div class="price-slider">
+                                <label for="price-range">Price Range:</label>
+                                <input type="range" id="price-range" min="0" max="1000" step="5">
+                                <span id="price-range-value">0</span>
+                            </div>
                         </ul>
                     </div>
 
@@ -99,9 +101,7 @@
 
     <nav class="navbar fixed-bottom navbar-dark bottom-nav">
     <form>        
-        <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>       
-        <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>        
-        <a href="form.html"><i class="fa fa-plus-square" aria-hidden="true"></i></a>        
+        <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>               
         <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
         <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
     </form>
