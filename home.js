@@ -10,18 +10,28 @@ function updateItemsPerPage() {
   } else {
     itemsPerPage = 8; // Revert to 8 items per page for larger screens
   }
+  const itemsPerPageDropdown = document.getElementById("itemsPerPage");
+  const selectedValue = parseInt(itemsPerPageDropdown.value);
+
+  // Update the itemsPerPage variable
+  itemsPerPage = selectedValue;
+
+  // Redisplay the products with the updated items per page
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
 }
+const itemsPerPageDropdown = document.getElementById("itemsPerPage");
+itemsPerPageDropdown.addEventListener("change", updateItemsPerPage);
 
 // Call the function initially and listen for window resize events
-updateItemsPerPage();
 window.addEventListener("resize", updateItemsPerPage);
 
-function updateCartBadge() {
-  const cartBadge = document.getElementById("cart-badge");
-  const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
-  const numItemsInCart = cartItems.length;
-  cartBadge.textContent = numItemsInCart.toString();
-}
+// function updateCartBadge() {
+//   const cartBadge = document.getElementById("cart-badge");
+//   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+//   const numItemsInCart = cartItems.length;
+//   cartBadge.textContent = numItemsInCart.toString();
+// }
 
 // Add this function to your addToCart function to trigger badge update
 function addToCart(product, button, customMessage, discountedPrice) {
@@ -75,8 +85,8 @@ function showToast(message) {
   }, 2000); // Adjust the duration as needed (in milliseconds)
 }
 
-// Call the updateCartBadge function to initialize the badge
-updateCartBadge();
+// // Call the updateCartBadge function to initialize the badge
+// updateCartBadge();
 
 function performSearch() {
   const searchInput = document.getElementById("search-input");
@@ -221,15 +231,14 @@ function createProductCards(products, container, customMessage) {
 
     cardDiv.innerHTML = `
                     <div class="card">
+                    <div class="discount-badge">${product.discount}% Off</div>
                     <a href="product.html?id=${product.id}">
-                        <img src="${product.image[0]}" class="card-img-top">
+                        <img src="${product.image[0]}" class="card-img-top"></a>
                         <div class="card-body">
-                            <h5 class="card-title">${product.title}</h5>
+                            <h5 class="card-title">${product.title}</h5><br>
                             <p class="card-text">
-                                <del>Price: ₹ ${originalPrice}</del><br>
-                               <b> Discounted Price: ₹ ${discountedPrice}</b>
-                            </p>                          
-                            
+                               <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
+                            </p>                                                    
                         </div>
                     </div>
                 `;

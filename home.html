@@ -13,100 +13,124 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark top-nav">
-        <div class="collapse navbar-collapse" id="navbarScroll">
-            <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
-                <a class="navbar-brand" href="home.html">
-                    <img src="https://logo.com/image-cdn/images/kts928pd/production/46fec0239332173dd16844534aab6117435e8f46-731x731.png?w=1080&q=72"
-                        width="50" height="50" alt="">
-                </a>
-            </ul>
-            <form>
-                <a href="category.html"><i class="fa fa-list-alt" aria-hidden="true"></i></a>
-                <a href="form.html"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
-                <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon"
-                        aria-hidden="true"></i><span id="cart-badge" class="badge badge-primary badge-pill">0</span></a>
-                <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
-            </form>
+    <div class="nav">
+        <div class="row">
+            <div class="col-1">
+                <div class="logo">
+                    <b>ANIME</b>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="input-group mb-3">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search by title"
+                        oninput="performSearch()">
+                    <div class="menu-icon">
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6"></div>
+            <div class="col-1">
+                <form>
+                    <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon"
+                            aria-hidden="true"></i>
+                        <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+                </form>
+            </div>
         </div>
-    </nav>
+    </div>
+    <hr>
     <div class="row">
-        <div class="col-2">
+        <div class="col-2 vl">
             <div class="side-bar">
                 <h2>Filter</h2>
                 <div class="category">
                     <h4>Category</h4>
-                <!-- <div id="CategoryFilter">
+                    <!-- <div id="CategoryFilter">
                     <div>
-                    <input type="checkbox" id="allCategories" value="" checked>
+                    <input type="checkbox" value="" checked>
                     </div>
                 </div> -->
                     <div class="price-slider">
                         <label for="price-range">Price Range:</label>
-                        <input type="range" id="price-range" min="0" max="1000"  step="5">
+                        <input type="range" id="price-range" min="0" max="1000" step="5">
                         <span id="price-range-value">0</span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="vl"></div>
-        <div class="col-lg-9 col-md-9">
+        <div class="col-lg-10 col-md-9">
             <div class="main-body">
                 <div class="categorymobile">
-                <div class="category">
-                    <h4>Category</h4>
-                    <div id="CategoryFilter">
-                        <div>
-                            <input type="checkbox" id="allCategories" value="" checked>
-                        </div>
-                    </div></div></div>
-              <div class="input-group mb-3">
-                    <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
-                    <div class="menu-icon">
-                        <i class="fa fa-filter" aria-hidden="true"></i>
-                    </div>
-                    
-                    <div id="right-menu" class="hidden">
-                        <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
-                        <ul>
-                            <div class="price-slider">
-                                <label for="price-range">Price Range:</label>
-                                <input type="range" id="price-range" min="0" max="1000" step="5">
-                                <span id="price-range-value">0</span>
+                    <div class="category">
+                        <h4>Category</h4>
+                        <div id="CategoryFilter">
+                            <div>
+                                <input type="checkbox" value="" checked>
                             </div>
-                        </ul>
+                        </div>
                     </div>
-
-              </div>
-                <div id="sort-container">
-                    <label for="sort-dropdown">Sort by Price:</label>
-                    <select id="sort-dropdown">
-                        <option value="defaultSort" selected>Select Sorting</option>
-                        <option value="low-to-high">Price: Low to High</option>
-                        <option value="high-to-low">Price: High to Low</option>
-                    </select>
                 </div>
-                <div id="product-container" class="product-container">
-
-                </div>
-                <div id="pagination" class="pagination"></div>
-                <div class="buttons">
-                    <button id="prev-page" class="btn btn-primary">Previous</button>
-                    <button id="next-page" class="btn btn-primary">Next</button>
+                <div id="right-menu" class="hidden">
+                    <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
+                    <ul>
+                        <div class="price-slider">
+                            <label for="price-range">Price Range:</label>
+                            <input type="range" id="price-range" min="0" max="1000" step="5">
+                            <span id="price-range-value">0</span>
+                        </div>
+                    </ul>
                 </div>
             </div>
-            <div id="toast-container" class="toast-container"></div>
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <div class="row sorts">
+                        <div class="col-2"></div>
+                        <div class="col-4">
+                            <div class="itemsort">
+                            <label for="itemsPerPage">Show :</label>
+                            <select id="itemsPerPage">
+                                <option value="4">4 Items</option>
+                                <option value="8" selected>8 Items</option>
+                                <option value="12">12 Items</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div id="sort-container">
+                                <label for="sort-dropdown">Sort by Price:</label>
+                                <select id="sort-dropdown">
+                                    <option value="defaultSort" selected><b>Select Sorting</b></option>
+                                    <option value="low-to-high"><b>Price: Low to High</b></option>
+                                    <option value="high-to-low"><b>Price: High to Low</b></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="product-container" class="product-container">
+
+            </div>
+            <div id="pagination" class="pagination"></div>
+            <div class="buttons">
+                <button id="prev-page" class="btn btn-primary">Previous</button>
+                <button id="next-page" class="btn btn-primary">Next</button>
+            </div>
         </div>
+        <div id="toast-container" class="toast-container"></div>
+    </div>
     </div>
 
     <nav class="navbar fixed-bottom navbar-dark bottom-nav">
-    <form>        
-        <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>               
-        <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
-        <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
-    </form>
+        <form>
+            <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
+            <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
+                <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+        </form>
     </nav>
-    
+
     <script type="text/javascript" src="./home.js"></script>
 </body>
 

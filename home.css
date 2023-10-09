@@ -1,39 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
 }
-
-.main-body {
-    padding: 30px;
+.nav{
+    flex-direction: column;
+    height: 80px !important;
+    padding: 20px !important;
+}
+.logo{
+    padding: 10px;
+}
+form{
+    padding: 0px;
+    gap: 20px;
+    display: flex;
+}
+form a{
+    border: 2px solid rgb(229, 229, 229);
+    padding: 10px;
+    color: black !important;
+    border-radius: 50%;
+}
+hr{
+    margin: 0 !important;
+    border-top: 1px solid rgb(229, 229, 229) !important;
+}
+.col-lg-10{
+    background-color: rgb(251, 251, 251) !important;
+    padding-bottom: 100px
 }
 
 .side-bar {
     padding: 30px;
-}
-
-.navbar {
-    background-color: #333;
-    color: white;
-}
-
-.navbar-brand img {
-    border-radius: 50%;
-}
-
-.navbar-brand img:hover {
-    opacity: 0.8;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    margin-right: 20px;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
 }
 
 .bottom-nav {
@@ -83,8 +82,8 @@
 
 #search-input {
     border-radius: 25px;
-    padding: 10px;
-    border-color: #343a40;
+    padding: 20px;
+    border:2px solid rgb(229, 229, 229);
 }
 
 .fa-filter {
@@ -98,6 +97,8 @@
 #right-menu {
     display: none;
 }
+
+
 
 #CategoryFilter {
     margin-top: 20px;
@@ -136,23 +137,54 @@ input[type="checkbox"]:checked+label {
 }
 
 .vl {
-    border: 1px solid #343a40;
+    border-right: 1px solid rgb(229, 229, 229);
     height: auto;
 }
-
-#sort-dropdown {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
+.row{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
+.sorts {
+    display: flex;
+    padding: 30px;
+}
+
+#sort-dropdown, #itemsPerPage {
+    border: none !important;
+    background-color: rgb(251, 251, 251) !important;
+}
+
 
 #sort-container {
     text-align: end;
-    margin: 30px;
+    border: 2px solid rgb(229, 229, 229);  
+    padding:0px 10px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+    font-size: 15px !important;
+}
+
+#sort-container label {
+    margin-top: 10px;
+    font-size: 15px;
+}
+.itemsort {
+    text-align: end;
+    border: 2px solid rgb(229, 229, 229);
+    padding: 0px 10px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+    font-size: 15px !important;
+}
+.itemsort label {
+    margin-top: 10px;
+    font-size: 15px;
 }
 
 .card {
-    border: 1px solid #ddd;
+    border: 1px solid rgb(229, 229, 229);
     border-radius: 10% !important;
     margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
@@ -166,6 +198,17 @@ input[type="checkbox"]:checked+label {
 .card img {
     object-fit: contain;
     height: 200px;
+}
+.discount-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: rgb(255, 209, 205);
+    color: rgb(244, 118, 109);
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
 .card-title {
@@ -320,6 +363,8 @@ a {
     .row {
         padding: 0%;
         margin-top: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     .input-group {
