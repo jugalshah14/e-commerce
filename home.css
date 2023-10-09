@@ -17,6 +17,11 @@ form{
     display: flex;
 }
 form a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
     border: 2px solid rgb(229, 229, 229);
     padding: 10px;
     color: black !important;
@@ -98,42 +103,40 @@ hr{
     display: none;
 }
 
-
-
 #CategoryFilter {
     margin-top: 20px;
-    display: flex;
-    align-items: center;
-    font-family: Arial, sans-serif;
     margin-bottom: 20px;
+    display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
-label {
+#CategoryFilter label {
     margin-right: 10px;
     font-size: 16px;
     color: #333;
+    margin-top: -22px;
+    margin-left: 40px;
 }
 
 input[type="checkbox"] {
     appearance: none;
     width: 20px;
     height: 20px;
-    background-color: #fff;
-    border: 2px solid #333;
-    border-radius: 4px;
+    background-color: white;
+    border: 2px solid rgb(229, 229, 229);
+    border-radius: 50%;
     cursor: pointer;
     outline: none;
 }
 
 input[type="checkbox"]:checked {
-    background-color: #343a40;
-    border-color: #343a40;
+    background-color: rgb(1, 109, 123);
+    border-color: rgb(229, 229, 229)    ;
 }
 
-input[type="checkbox"]:checked+label {
-    color: #343a40;
-    font-weight: bold;
+input[type="checkbox"]:checked+label{
+    color: rgb(1, 109, 123);
 }
 
 .vl {
@@ -170,7 +173,6 @@ input[type="checkbox"]:checked+label {
     font-size: 15px;
 }
 .itemsort {
-    text-align: end;
     border: 2px solid rgb(229, 229, 229);
     padding: 0px 10px;
     border-radius: 25px;
@@ -183,11 +185,23 @@ input[type="checkbox"]:checked+label {
     font-size: 15px;
 }
 
+#no-products-found{
+    width: 100%;
+    text-align: center;
+}
+
+#no-products-found img {
+    width: 50%;
+    height: 50%;
+}
+
 .card {
-    border: 1px solid rgb(229, 229, 229);
+    border: 2px solid rgb(229, 229, 229);
     border-radius: 10% !important;
     margin-bottom: 20px;
+    overflow: hidden;
     transition: transform 0.3s ease-in-out;
+    padding: 5px;
 }
 
 .card:hover {
@@ -197,7 +211,8 @@ input[type="checkbox"]:checked+label {
 
 .card img {
     object-fit: contain;
-    height: 200px;
+    height: 250px;
+    
 }
 .discount-badge {
     position: absolute;
@@ -211,16 +226,35 @@ input[type="checkbox"]:checked+label {
     font-weight: bold;
 }
 
-.card-title {
-    font-size: 1.2rem;
+.category-show{
+    position: absolute;
+    background-color: rgb(255, 209, 205);
+    color: rgb(244, 118, 109);
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 12px;
     font-weight: bold;
-    margin-bottom: 10px;
-    color: black;
+}
+
+.product-title {
+    margin-top: 50px;
+    max-height: 2.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 5px;
+}
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
 }
 
 .card-text {
     color: black;
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 p {
@@ -277,49 +311,6 @@ a {
     color: black;
 }
 
-.price-slider {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-}
-
-.price-slider label {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-#price-range {
-    margin-top: 20px;
-    width: 80%;
-    -webkit-appearance: none;
-    appearance: none;
-    height: 5px;
-    background: #ddd;
-    border-radius: 5px;
-}
-
-#price-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #343a40;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-#price-range-value {
-    font-weight: bold;
-    margin-top: 5px;
-}
-
-#price-range:focus,
-#price-range:active {
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
 
 @media only screen and (max-width: 768px) {
     .main-body {

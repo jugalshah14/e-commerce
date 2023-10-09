@@ -107,7 +107,18 @@ function displayProductsOnPage(products, container, page) {
   const productsToDisplay = products.slice(start, end);
 
   container.innerHTML = "";
-  createProductCards(productsToDisplay, container, "Product added to cart");
+  const noProductsFound = document.getElementById("no-products-found");
+  if (productsToDisplay.length === 0) {
+    // Show the "No products found" placeholder
+    noProductsFound.style.display = "block";
+  } else {
+    // Hide the "No products found" placeholder
+    noProductsFound.style.display = "none";
+
+    if (productsToDisplay.length > 0) {
+      createProductCards(productsToDisplay, container, "Product added to cart");
+    }
+  }
 }
 
 const prevPageButton = document.getElementById("prev-page");
@@ -235,10 +246,14 @@ function createProductCards(products, container, customMessage) {
                     <a href="product.html?id=${product.id}">
                         <img src="${product.image[0]}" class="card-img-top"></a>
                         <div class="card-body">
-                            <h5 class="card-title">${product.title}</h5><br>
+                        <p class="category-show">Category : ${product.category}</p>
+                         <div class="product-title">
+                          <h5 class="card-title">${product.title}</h5>
+                        </div><br><br>
                             <p class="card-text">
                                <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
                             </p>                                                    
+                        </div>
                         </div>
                     </div>
                 `;
@@ -255,20 +270,27 @@ function createProductCards(products, container, customMessage) {
   container.appendChild(row);
 }
 
-const priceRangeInput = document.getElementById("price-range");
+const priceRangeSlider = document.getElementById("price-range-slider");
 const priceRangeValue = document.getElementById("price-range-value");
 
-priceRangeInput.value = 0;
-// Update the price range display when the slider value changes
-priceRangeInput.addEventListener("input", () => {
-  const selectedValue = priceRangeInput.value;
-  priceRangeValue.textContent = `₹ ${selectedValue}`;
+// Initialize the dual-range slider
+noUiSlider.create(priceRangeSlider, {
+  start: [0, findMaxPriceInLocalStorage()], // Initial values for min and max
+  connect: true, // Connect the two handles
+  range: {
+    min: 0,
+    max: findMaxPriceInLocalStorage(), // Set the maximum value dynamically
+  },
+});
 
-  minPrice = 0;
-  priceRangeInput.max = findMaxPriceInLocalStorage();
-  maxPrice = parseInt(selectedValue);
+// Update the price range display when the slider values change
+priceRangeSlider.noUiSlider.on("update", (values, handle) => {
+  const [minValue, maxValue] = values;
+  priceRangeValue.textContent = `₹ ${minValue} - ₹ ${maxValue}`;
 
-  // Filter products automatically as the user moves the slider
+  // Filter products automatically as the user moves the sliders
+  const minPrice = parseFloat(minValue);
+  const maxPrice = parseFloat(maxValue);
   filteredProducts = products.filter((product) => {
     const discountedPrice = Math.round(
       product.price * (1 - product.discount / 100)
@@ -280,7 +302,6 @@ priceRangeInput.addEventListener("input", () => {
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 });
-priceRangeInput.max = findMaxPriceInLocalStorage();
 
 function populateCategoryCheckboxes() {
   const categoryFilter = document.getElementById("CategoryFilter");
@@ -307,6 +328,7 @@ function filterProductsByCategory() {
   const selectedCategories = Array.from(checkboxes)
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.value);
+
   if (selectedCategories.length === 0 || selectedCategories.includes("")) {
     filteredProducts = products;
   } else {
@@ -316,7 +338,6 @@ function filterProductsByCategory() {
   }
 
   currentPage = 1;
-
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 }

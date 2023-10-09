@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.js"></script>
+
 </head>
 
 <body>
@@ -46,22 +47,20 @@
                 <h2>Filter</h2>
                 <div class="category">
                     <h4>Category</h4>
-                    <!-- <div id="CategoryFilter">
-                    <div>
-                    <input type="checkbox" value="" checked>
+                    <div id="CategoryFilter">
+                    <input type="checkbox" value="" checked>                    
                     </div>
-                </div> -->
-                    <div class="price-slider">
-                        <label for="price-range">Price Range:</label>
-                        <input type="range" id="price-range" min="0" max="1000" step="5">
-                        <span id="price-range-value">0</span>
+                    <div class="price-range">
+                    <h5>Price Range</h5><br>
+                    <div id="price-range-slider"></div><br>
+                    <div id="price-range-value">₹ 0 - ₹ 1000</div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-10 col-md-9">
             <div class="main-body">
-                <div class="categorymobile">
+                <!-- <div class="categorymobile">
                     <div class="category">
                         <h4>Category</h4>
                         <div id="CategoryFilter">
@@ -70,7 +69,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div id="right-menu" class="hidden">
                     <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
                     <ul>
@@ -99,7 +98,7 @@
                         </div>
                         <div class="col-6">
                             <div id="sort-container">
-                                <label for="sort-dropdown">Sort by Price:</label>
+                                <label for="sort-dropdown">Sort by Price : </label>
                                 <select id="sort-dropdown">
                                     <option value="defaultSort" selected><b>Select Sorting</b></option>
                                     <option value="low-to-high"><b>Price: Low to High</b></option>
@@ -110,8 +109,12 @@
                     </div>
                 </div>
             </div>
+            <div id="no-products-found" style="display: none;">
+                <img src="https://evgracias.com/images/no-products.jpg"
+                    alt="No Product Found">
+            </div>
             <div id="product-container" class="product-container">
-
+                
             </div>
             <div id="pagination" class="pagination"></div>
             <div class="buttons">
