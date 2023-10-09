@@ -249,7 +249,7 @@ function createProductCards(products, container, customMessage) {
                         <p class="category-show">Category : ${product.category}</p>
                          <div class="product-title">
                           <h5 class="card-title">${product.title}</h5>
-                        </div><br><br>
+                        </div>
                             <p class="card-text">
                                <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
                             </p>                                                    

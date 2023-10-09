@@ -60,6 +60,12 @@
         </div>
         <div class="col-lg-10 col-md-9">
             <div class="main-body">
+                <div class="input-group mb-3">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
+                    <div class="menu-icon">
+                        <i class="fa fa-filter" aria-hidden="true"></i>
+                    </div>
+                </div>
                 <!-- <div class="categorymobile">
                     <div class="category">
                         <h4>Category</h4>
@@ -82,11 +88,11 @@
                 </div>
             </div>
             <div class="row" style="margin-bottom: 20px;">
-                <div class="col-6"></div>
-                <div class="col-6">
+                <div class="col-6 first-col"></div>
+                <div class="col-6 second-col">
                     <div class="row sorts">
-                        <div class="col-2"></div>
-                        <div class="col-4">
+                        <div class="col-2 first-col"></div>
+                        <div class="col-4 third-col ">
                             <div class="itemsort">
                             <label for="itemsPerPage">Show :</label>
                             <select id="itemsPerPage">
@@ -96,11 +102,11 @@
                             </select>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 third-col">
                             <div id="sort-container">
-                                <label for="sort-dropdown">Sort by Price : </label>
+                                <label for="sort-dropdown">Sort by : </label>
                                 <select id="sort-dropdown">
-                                    <option value="defaultSort" selected><b>Select Sorting</b></option>
+                                    <option value="defaultSort" selected><b>Price</b></option>
                                     <option value="low-to-high"><b>Price: Low to High</b></option>
                                     <option value="high-to-low"><b>Price: High to Low</b></option>
                                 </select>

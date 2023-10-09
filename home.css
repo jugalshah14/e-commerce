@@ -152,6 +152,10 @@ input[type="checkbox"]:checked+label{
     padding: 30px;
 }
 
+.main-body{
+    display: none;
+}
+
 #sort-dropdown, #itemsPerPage {
     border: none !important;
     background-color: rgb(251, 251, 251) !important;
@@ -253,6 +257,7 @@ input[type="checkbox"]:checked+label{
 }
 
 .card-text {
+    margin-top: 50px;
     color: black;
     font-size: 1.4rem;
 }
@@ -314,6 +319,7 @@ a {
 
 @media only screen and (max-width: 768px) {
     .main-body {
+        display: flex;
         padding: 10px;
         margin-top: 20px;
     }
@@ -324,7 +330,7 @@ a {
         padding-left: 10px !important;
     }
 
-    .top-nav {
+    .nav {
         display: none !important;
     }
 
@@ -350,10 +356,30 @@ a {
     .vl {
         display: none !important;
     }
+    .sorts{
+        width: 100% !important;
+    }
+    .first-col{
+        display: none !important;
+    }
+   .second-col{
+        max-width: 100% !important;
+        flex: 100% !important;
+   }
+   .third-col{
+        max-width: 50% !important;
+        flex: 100% !important;
+   }
+   .itemsort{
+    font-size: 10px !important;
+   }
+   .itemsort label {
+    font-size: 10px !important;
+}
 
     .row {
         padding: 0%;
-        margin-top: 10px !important;
+        margin-top: 0px !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
@@ -368,8 +394,16 @@ a {
 
     #sort-container {
         margin-bottom: 0px;
-        margin-top: 20px;
+        font-size: 10px !important;
     }
+    #sort-container label{
+        font-size: 10px !important;
+    }
+
+    #sort-dropdown{
+        width: 50% !important;
+    }
+    
 
     .fa-filter {
         display: block !important;
@@ -388,8 +422,17 @@ a {
         gap: 5px;
         align-items: flex-start;
     }
+    .card-body{
+        padding: 10px !important;
+    }
     .card img{
         height: 100px;
+    }
+    .discount-badge{
+        font-size: 10px !important;
+    }
+    .category-show{
+        font-size: 10px;
     }
 
     .card-title{
@@ -397,18 +440,24 @@ a {
     }
 
     .card-text{
-        font-size: 11px;
+        margin-top: 10px;
+        font-size: 15px;
     }
 
     .menu-icon {
+        display: flex;
         cursor: pointer;
-        border: 1px solid #343a40 !important;
+        justify-content: center;
+            align-items: center;
+            height: 45px;
+            width: 45px;
+        border: 2px solid rgb(229, 229, 229) !important;
         border-radius: 50%;
         padding: 10px;
     }
-         .buttons {
-             margin-bottom: 50px;
-         }
+    .buttons {
+        margin-bottom: 50px;
+    }
 
 
     #right-menu {
