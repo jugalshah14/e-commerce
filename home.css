@@ -3,20 +3,25 @@
 * {
     font-family: 'Poppins';
 }
-.nav{
+
+.nav {
     flex-direction: column;
     height: 80px !important;
     padding: 20px !important;
 }
-.logo{
+
+.logo {
     padding: 10px;
+    color: black !important;
 }
-form{
+
+form {
     padding: 0px;
     gap: 20px;
     display: flex;
 }
-form a{
+
+form a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,11 +32,13 @@ form a{
     color: black !important;
     border-radius: 50%;
 }
-hr{
+
+hr {
     margin: 0 !important;
     border-top: 1px solid rgb(229, 229, 229) !important;
 }
-.col-lg-10{
+
+.col-lg-10 {
     background-color: rgb(251, 251, 251) !important;
     padding-bottom: 100px
 }
@@ -88,7 +95,7 @@ hr{
 #search-input {
     border-radius: 25px;
     padding: 20px;
-    border:2px solid rgb(229, 229, 229);
+    border: 2px solid rgb(229, 229, 229);
 }
 
 .fa-filter {
@@ -132,10 +139,10 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
     background-color: rgb(1, 109, 123);
-    border-color: rgb(229, 229, 229)    ;
+    border-color: rgb(229, 229, 229);
 }
 
-input[type="checkbox"]:checked+label{
+input[type="checkbox"]:checked+label {
     color: rgb(1, 109, 123);
 }
 
@@ -143,20 +150,23 @@ input[type="checkbox"]:checked+label{
     border-right: 1px solid rgb(229, 229, 229);
     height: auto;
 }
-.row{
+
+.row {
     margin-left: 0 !important;
     margin-right: 0 !important;
 }
+
 .sorts {
     display: flex;
     padding: 30px;
 }
 
-.main-body{
+.main-body {
     display: none;
 }
 
-#sort-dropdown, #itemsPerPage {
+#sort-dropdown,
+#itemsPerPage {
     border: none !important;
     background-color: rgb(251, 251, 251) !important;
 }
@@ -164,8 +174,8 @@ input[type="checkbox"]:checked+label{
 
 #sort-container {
     text-align: end;
-    border: 2px solid rgb(229, 229, 229);  
-    padding:0px 10px;
+    border: 2px solid rgb(229, 229, 229);
+    padding: 0px 10px;
     border-radius: 25px;
     align-items: center;
     display: flex;
@@ -176,6 +186,7 @@ input[type="checkbox"]:checked+label{
     margin-top: 10px;
     font-size: 15px;
 }
+
 .itemsort {
     border: 2px solid rgb(229, 229, 229);
     padding: 0px 10px;
@@ -184,12 +195,13 @@ input[type="checkbox"]:checked+label{
     display: flex;
     font-size: 15px !important;
 }
+
 .itemsort label {
     margin-top: 10px;
     font-size: 15px;
 }
 
-#no-products-found{
+#no-products-found {
     width: 100%;
     text-align: center;
 }
@@ -199,9 +211,16 @@ input[type="checkbox"]:checked+label{
     height: 50%;
 }
 
+.sort-product {
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+    margin: 20px 20px;
+}
+
 .card {
     border: 2px solid rgb(229, 229, 229);
-    border-radius: 10% !important;
+    border-radius: 20px !important;
     margin-bottom: 20px;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
@@ -216,8 +235,9 @@ input[type="checkbox"]:checked+label{
 .card img {
     object-fit: contain;
     height: 250px;
-    
+
 }
+
 .discount-badge {
     position: absolute;
     top: 12px;
@@ -230,7 +250,7 @@ input[type="checkbox"]:checked+label{
     font-weight: bold;
 }
 
-.category-show{
+.category-show {
     position: absolute;
     background-color: rgb(255, 209, 205);
     color: rgb(244, 118, 109);
@@ -238,23 +258,20 @@ input[type="checkbox"]:checked+label{
     padding: 5px 10px;
     font-size: 12px;
     font-weight: bold;
+    
 }
 
 .product-title {
-    margin-top: 50px;
-    max-height: 2.4em;
+    margin-top: 30px;
+    max-height: 3em;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     margin-bottom: 5px;
 }
 
-.card-title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin: 0;
-}
+
 
 .card-text {
     margin-top: 50px;
@@ -318,10 +335,14 @@ a {
 
 
 @media only screen and (max-width: 768px) {
+    .col-lg-10{
+        padding-right: 0 !important ;
+        padding-left: 0 !important;
+    }
     .main-body {
         display: flex;
         padding: 10px;
-        margin-top: 20px;
+        padding-bottom: 0;
     }
 
     .col-sm-6 {
@@ -336,12 +357,24 @@ a {
 
     .bottom-nav {
         display: flex !important;
-        flex-direction: column;
+        width: 100% !important;
+        border-top: 1px solid rgb(229, 229, 229);
+        justify-content: space-between !important;
+        align-items: center;
+        text-align: center;
+        padding: 10px 30px;
+        background-color: white !important;
     }
 
-    form {
-        justify-content: space-between;
-        margin-bottom: 0 !important;
+    .nav-link {
+        height: 30px;
+        width: 30px;
+        color: rgb(173, 173, 173);
+        padding: 0 !important;
+    }
+    
+    .nav-link.active {
+        color: #007481;
     }
 
     .side-bar {
@@ -356,26 +389,19 @@ a {
     .vl {
         display: none !important;
     }
-    .sorts{
+
+    .sorts {
         width: 100% !important;
     }
-    .first-col{
-        display: none !important;
+
+    .itemsort {
+        font-size: 10px !important;
+        width: 100%;
     }
-   .second-col{
-        max-width: 100% !important;
-        flex: 100% !important;
-   }
-   .third-col{
-        max-width: 50% !important;
-        flex: 100% !important;
-   }
-   .itemsort{
-    font-size: 10px !important;
-   }
-   .itemsort label {
-    font-size: 10px !important;
-}
+
+    .itemsort label {
+        font-size: 10px !important;
+    }
 
     .row {
         padding: 0%;
@@ -385,25 +411,28 @@ a {
     }
 
     .input-group {
-        gap: 20px;
-    }
-
-    #search-input {
-        width: 70%;
+        gap: 10px;
+        margin-bottom: 0 !important;
     }
 
     #sort-container {
         margin-bottom: 0px;
         font-size: 10px !important;
+        width: 100%;
     }
-    #sort-container label{
+
+    #sort-container label {
         font-size: 10px !important;
     }
 
-    #sort-dropdown{
+    #sort-dropdown {
         width: 50% !important;
     }
-    
+
+    .sort-product {
+        padding: 10px;
+        margin: 0;
+    }
 
     .fa-filter {
         display: block !important;
@@ -422,24 +451,28 @@ a {
         gap: 5px;
         align-items: flex-start;
     }
-    .card-body{
+
+    .card-body {
         padding: 10px !important;
     }
-    .card img{
-        height: 100px;
+
+    .card img {
+        height: 150px;
     }
-    .discount-badge{
+
+    .discount-badge {
         font-size: 10px !important;
     }
-    .category-show{
+
+    .category-show {
         font-size: 10px;
     }
 
-    .card-title{
+    .card-title {
         font-size: 15px;
     }
 
-    .card-text{
+    .card-text {
         margin-top: 10px;
         font-size: 15px;
     }
@@ -448,13 +481,14 @@ a {
         display: flex;
         cursor: pointer;
         justify-content: center;
-            align-items: center;
-            height: 45px;
-            width: 45px;
+        align-items: center;
+        height: 45px;
+        width: 45px;
         border: 2px solid rgb(229, 229, 229) !important;
         border-radius: 50%;
         padding: 10px;
     }
+
     .buttons {
         margin-bottom: 50px;
     }

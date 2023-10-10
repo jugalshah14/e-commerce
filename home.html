@@ -48,7 +48,7 @@
                 <div class="category">
                     <h4>Category</h4>
                     <div id="CategoryFilter">
-                    <input type="checkbox" value="" checked>                    
+                    <input title="checkbox-filter" type="checkbox" value="" checked />                    
                     </div>
                     <div class="price-range">
                     <h5>Price Range</h5><br>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-10 col-md-9">
             <div class="main-body">
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
                     <div class="menu-icon">
                         <i class="fa fa-filter" aria-hidden="true"></i>
@@ -78,21 +78,14 @@
                 </div> -->
                 <div id="right-menu" class="hidden">
                     <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
-                    <ul>
                         <div class="price-slider">
                             <label for="price-range">Price Range:</label>
                             <input type="range" id="price-range" min="0" max="1000" step="5">
-                            <span id="price-range-value">0</span>
+                            <span id="price-range-value-mobile">0</span>
                         </div>
-                    </ul>
                 </div>
             </div>
-            <div class="row" style="margin-bottom: 20px;">
-                <div class="col-6 first-col"></div>
-                <div class="col-6 second-col">
-                    <div class="row sorts">
-                        <div class="col-2 first-col"></div>
-                        <div class="col-4 third-col ">
+            <div class="sort-product">
                             <div class="itemsort">
                             <label for="itemsPerPage">Show :</label>
                             <select id="itemsPerPage">
@@ -101,8 +94,6 @@
                                 <option value="12">12 Items</option>
                             </select>
                             </div>
-                        </div>
-                        <div class="col-6 third-col">
                             <div id="sort-container">
                                 <label for="sort-dropdown">Sort by : </label>
                                 <select id="sort-dropdown">
@@ -112,9 +103,6 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
             <div id="no-products-found" style="display: none;">
                 <img src="https://evgracias.com/images/no-products.jpg"
                     alt="No Product Found">
@@ -132,13 +120,12 @@
     </div>
     </div>
 
-    <nav class="navbar fixed-bottom navbar-dark bottom-nav">
-        <form>
-            <a href="home.html"><i class="fa fa-home" aria-hidden="true"></i></a>
-            <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon" aria-hidden="true"></i>
-                <a href="checkout.html"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
-        </form>
-    </nav>
+<div class="bottom-nav fixed-bottom">
+    <a href="home.html" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i></a>
+    <a href="AddToCart.html" class="nav-link"><i id="cart-icon" class="fa fa-shopping-cart cart-icon"
+            aria-hidden="true"></i></a>
+    <a href="checkout.html" class="nav-link"><i class="fa fa-credit-card-alt" aria-hidden="true"></i></a>
+</div>
 
     <script type="text/javascript" src="./home.js"></script>
 </body>

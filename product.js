@@ -35,7 +35,9 @@ if (product) {
                 <i class="fa fa-arrow-right" id="nextButton" aria-hidden="true"></i>
             </div>
             <div class="product-details">
-                <h2>${product.title}</h2>
+            <div class="product-title">
+                          <h2 class="card-title">${product.title}</h2>
+                        </div>
                 <del><p>Price: ₹ ${product.price}</p></del>
                 <p>Discount: ₹ ${discountedPrice}</p>
                 <p>Quantity: ${product.availableQuantity}</p>

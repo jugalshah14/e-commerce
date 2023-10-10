@@ -246,7 +246,7 @@ function createProductCards(products, container, customMessage) {
                     <a href="product.html?id=${product.id}">
                         <img src="${product.image[0]}" class="card-img-top"></a>
                         <div class="card-body">
-                        <p class="category-show">Category : ${product.category}</p>
+                        <p class="category-show">${product.category}</p>
                          <div class="product-title">
                           <h5 class="card-title">${product.title}</h5>
                         </div>
@@ -373,6 +373,20 @@ function findMaxPriceInLocalStorage() {
     return "Local storage is empty or 'products' key is not set.";
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the current URL
+  var currentURL = window.location.href;
+
+  // Find the links and set the "active" class based on the current URL
+  var links = document.querySelectorAll(".nav-link");
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute("href");
+    if (currentURL.indexOf(href) !== -1) {
+      links[i].classList.add("active");
+    }
+  }
+});
 
 function getFormDataFromLocalStorage() {
   const items = JSON.parse(localStorage.getItem("items")) || [];

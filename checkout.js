@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <td><img src="${product.image[0]}" alt="${
         product.title
       }" width="50" height="50"></td>
-                <td>${product.title}</td>
+                <td class="product-title">${product.title}</td>
                 <td>${product.quantity}</td>
                 <td>${totalItemPrice.toFixed(2)} ₹</td>
               `;
@@ -104,5 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
         $("#shipping-info-dialog").modal("show");
       }
     });
+  }
+  var currentURL = window.location.href;
+
+  // Find the links and set the "active" class based on the current URL
+  var links = document.querySelectorAll(".nav-link");
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute("href");
+    if (currentURL.indexOf(href) !== -1) {
+      links[i].classList.add("active");
+    }
   }
 });

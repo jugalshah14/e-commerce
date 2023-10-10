@@ -1,40 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
 }
 
-.bottom-nav{
-    display: none !important;
-}
-.cart-body{
-    padding: 30px;
+.productbody {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.navbar {
-    color: #fff;
-    padding: 10px 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+.nav {
+    flex-direction: column;
+    height: 80px !important;
+    padding: 20px !important;
 }
 
-.navbar-brand img {
+.logo {
+    padding: 10px;
+}
+
+#search-input {
+    border-radius: 25px;
+    padding: 20px;
+    border: 2px solid rgb(229, 229, 229);
+}
+
+form {
+    padding: 0px;
+    gap: 20px;
+    display: flex;
+}
+
+form a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 2px solid rgb(229, 229, 229);
+    padding: 10px;
+    color: black !important;
     border-radius: 50%;
 }
-.navbar-brand img:hover {
-    opacity: 0.8;
+
+hr {
+    margin: 0 !important;
+    border-top: 1px solid rgb(229, 229, 229) !important;
 }
 
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 15px;
-    font-size: 18px;
+.bottom-nav {
+    display: none !important;
 }
 
-.navbar a:hover {
-    text-decoration: underline;
+.cart-body {
+    padding: 30px;
 }
-.cart-text{
+.product-title {
+    max-height: 3em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-bottom: 5px;
+}
+
+.cart-text {
     margin: 20px;
 }
 
@@ -141,31 +171,47 @@
     background-color: #e04111;
 }
 
-@media only screen and (max-width: 768px){
-    .cart-body{
+@media only screen and (max-width: 768px) {
+    .cart-body {
         padding: 20px;
         margin-bottom: 50px;
     }
-    .top-nav{
+
+    .nav {
         display: none !important;
     }
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 1.2rem;
-        }
-         .bottom-nav {
-            display: flex !important;
-             flex-direction: column;
-         }
-    .checkout{
+
+    .bottom-nav {
+        display: flex !important;
+        width: 100% !important;
+        border-top: 1px solid rgb(229, 229, 229);
+        justify-content: space-between !important;
+        align-items: center;
+        text-align: center;
+        padding: 10px 30px;
+        background-color: white !important;
+    }
+
+    .nav-link {
+        height: 30px;
+        width: 30px;
+        color: rgb(173, 173, 173);
+        padding: 0 !important;
+    }
+
+    .nav-link.active {
+        color: #007481;
+    }
+
+    .checkout {
         width: 100%;
     }
-    h1{
+
+    h1 {
         font-size: 2rem !important;
     }
-    form{
+
+    form {
         justify-content: space-between;
         margin-bottom: 0 !important;
     }

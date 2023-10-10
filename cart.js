@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         cartItemDiv.innerHTML = `
           <img src="${product.image[0]}" alt="${product.title}">
           <div>
-              <h5>${product.title}</h5>
+              <h5 class="product-title">${product.title}</h5>
               <p><del>Original Price: ₹ ${originalPrice.toFixed(2)}</del></p>
               <p>Discounted Price: ₹ ${discountedPrice.toFixed(2)}</p>
               <div class="quantity">
@@ -169,6 +169,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       updateCartDisplay();
+    }
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  // Get the current URL
+  var currentURL = window.location.href;
+
+  // Find the links and set the "active" class based on the current URL
+  var links = document.querySelectorAll(".nav-link");
+  for (var i = 0; i < links.length; i++) {
+    var href = links[i].getAttribute("href");
+    if (currentURL.indexOf(href) !== -1) {
+      links[i].classList.add("active");
     }
   }
 });

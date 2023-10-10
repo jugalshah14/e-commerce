@@ -1,7 +1,51 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
 
 * {
-    font-family: 'Montserrat';
+    font-family: 'Poppins';
+}
+
+.productbody {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.nav {
+    flex-direction: column;
+    height: 80px !important;
+    padding: 20px !important;
+}
+
+.logo {
+    padding: 10px;
+}
+
+#search-input {
+    border-radius: 25px;
+    padding: 20px;
+    border: 2px solid rgb(229, 229, 229);
+}
+
+.icon {
+    padding: 0px;
+    gap: 20px;
+    display: flex;
+}
+
+.icon a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 2px solid rgb(229, 229, 229);
+    padding: 10px;
+    color: black !important;
+    border-radius: 50%;
+}
+
+hr {
+    margin: 0 !important;
+    border-top: 1px solid rgb(229, 229, 229) !important;
 }
 
 .checkout-body{
@@ -12,23 +56,6 @@
     display: none !important;
 }
 
-.navbar {
-    background-color: #333;
-    color: #fff;
-}
-.navbar-brand img {
-    border-radius: 50%;
-}
-
-.navbar-brand img:hover {
-    opacity: 0.8;
-}
-
-.navbar a {
-    color: #fff;
-    text-decoration: none;
-    margin-right: 20px;
-}
 
 .container {
     background-color: #fff;
@@ -42,9 +69,6 @@ h2 {
     color: #333;
 }
 
-form {
-    margin-top: 20px;
-}
 
 label {
     font-weight: bold;
@@ -77,6 +101,12 @@ label {
 .table td {
     vertical-align: middle;
 }
+.product-title {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .modal-content {
     border-radius: 0;
@@ -102,23 +132,29 @@ label {
     transition: background-color 0.3s ease-in-out;
 }
 @media only screen and (max-width: 768px) {
-    .top-nav {
+    .nav {
             display: none !important;
-        }
-    
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            margin-right: 15px;
-            font-size: 1.2rem;
         }
     
         .bottom-nav {
             display: flex !important;
-            flex-direction: column;
+            width: 100% !important;
+            border-top: 1px solid rgb(229, 229, 229);
+            justify-content: space-between !important;
+            align-items: center;
+            text-align: center;
+            padding: 10px 30px;
+            background-color: white !important;
         }
-                 form {
-                     justify-content: space-between;
-                     margin-top: 0 !important;
-                 }
+    
+                .nav-link {
+                    height: 30px;
+                    width: 30px;
+                    color: rgb(173, 173, 173);
+                    padding: 0 !important;
+                }
+        
+                .nav-link.active {
+                    color: #007481;
+                }
 }
