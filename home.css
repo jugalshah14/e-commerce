@@ -92,6 +92,29 @@ hr {
     outline: none;
 }
 
+.noUi-target{
+    border-radius: 25px !important;
+}
+
+.noUi-horizontal{
+    height: 5px !important;
+}
+
+.noUi-handle:after,
+.noUi-handle:before{
+    display: none !important;
+}
+.noUi-connect {
+    background-color: rgb(1, 116, 129) !important;
+}
+
+.noUi-horizontal .noUi-handle{
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 25px !important;
+    top: -9px !important;
+}
+
 #search-input {
     border-radius: 25px;
     padding: 20px;
@@ -120,7 +143,7 @@ hr {
 
 #CategoryFilter label {
     margin-right: 10px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #333;
     margin-top: -22px;
     margin-left: 40px;
@@ -179,12 +202,12 @@ input[type="checkbox"]:checked+label {
     border-radius: 25px;
     align-items: center;
     display: flex;
-    font-size: 15px !important;
+    font-size: 1rem !important;
 }
 
 #sort-container label {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .item-sort {
@@ -193,12 +216,12 @@ input[type="checkbox"]:checked+label {
     border-radius: 25px;
     align-items: center;
     display: flex;
-    font-size: 15px !important;
+    font-size: 1rem !important;
 }
 
 .item-sort label {
     margin-top: 10px;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 #no-products-found {
@@ -246,7 +269,7 @@ input[type="checkbox"]:checked+label {
     color: rgb(244, 118, 109);
     border-radius: 15px;
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -258,7 +281,7 @@ input[type="checkbox"]:checked+label {
     color: rgb(167, 160, 159);
     border-radius: 15px;
     padding: 5px 10px;
-    font-size: 30px;
+    font-size: 1.4rem;
     font-weight: bold;
     cursor: pointer;
 }
@@ -269,7 +292,7 @@ input[type="checkbox"]:checked+label {
     color: rgb(0, 159, 34);
     border-radius: 15px;
     padding: 5px 10px;
-    font-size: 12px;
+    font-size: 0.8rem;
     font-weight: bold;
     
 }
@@ -282,6 +305,7 @@ input[type="checkbox"]:checked+label {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     margin-bottom: 5px;
+    font-size: 1rem;
 }
 
 
@@ -463,10 +487,14 @@ a {
         margin-top: 20px;
         display: flex;
         margin-bottom: 20px;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         gap: 5px;
         align-items: flex-start;
+    }
+
+    #CategoryFilter label{
+        margin-top: -27px;
     }
 
     .card-body {
@@ -486,12 +514,12 @@ a {
     }
 
     .card-title {
-        font-size: 15px;
+        font-size: 0.8rem;
     }
 
     .card-text {
         margin-top: 10px;
-        font-size: 15px;
+        font-size: 1rem;
     }
 
     .menu-icon {
@@ -510,13 +538,16 @@ a {
         margin-bottom: 50px;
     }
 
+    .right-body{
+        padding: 20px;
+    }
 
     #right-menu {
         display: block;
         position: fixed;
         right: -300px;
-        width: 250px;
-        height: auto;
+        width: 300px;
+        height: 100%;
         background-color: #fff;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         transition: right 0.3s ease-in-out;
@@ -525,5 +556,9 @@ a {
 
     #right-menu.show {
         right: 0;
+    }
+    #close-button{
+        width: 30px !important;
+        height: 30px !important;
     }
 }

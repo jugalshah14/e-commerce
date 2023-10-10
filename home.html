@@ -25,17 +25,13 @@
                 <div class="input-group mb-3">
                     <input type="text" id="search-input" class="form-control" placeholder="Search by title"
                         oninput="performSearch()">
-                    <div class="menu-icon">
-                        <i class="fa fa-filter" aria-hidden="true"></i>
-                    </div>
                 </div>
             </div>
             <div class="col-6"></div>
             <div class="col-1">
                 <form>
-                    <a href="AddToCart.html"><i id="cart-icon" class="fa fa-shopping-cart cart-icon"
-                            aria-hidden="true"></i>
-                        <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+                    <a href="AddToCart.html"><ion-icon name="cart-outline"></ion-icon></i></a>
+                        <a href="wishlist.html"><ion-icon name="heart-outline"></ion-icon></a>
                 </form>
             </div>
         </div>
@@ -43,7 +39,7 @@
     <hr>
     <div class="row">
         <div class="col-2 vl">
-            <div class="side-bar">
+            <!-- <div class="side-bar">
                 <h2>Filter</h2>
                 <div class="category">
                     <h4>Category</h4>
@@ -56,33 +52,35 @@
                     <div id="price-range-value">₹ 0 - ₹ 1000</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-10 col-md-9">
             <div class="main-body">
                 <div class="input-group">
                     <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
                     <div class="menu-icon">
-                        <i class="fa fa-filter" aria-hidden="true"></i>
+                        <ion-icon name="filter-outline"></ion-icon>
                     </div>
-                </div>
-                <!-- <div class="category-mobile">
-                    <div class="category">
-                        <h4>Category</h4>
-                        <div id="CategoryFilter">
-                            <div>
-                                <input type="checkbox" value="" checked>
+                </div>                
+                <div id="right-menu" class="hidden">                  
+                    <ion-icon name="close-outline" id="close-button"></ion-icon>
+                    <div class="right-body">
+                    <div class="category-mobile">
+                        <div class="category">
+                            <h4>Category</h4>
+                            <div id="CategoryFilter">
+                                <div>
+                                    <input type="checkbox" value="" checked>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div> -->
-                <div id="right-menu" class="hidden">
-                    <i class="fa fa-times" id="close-button" aria-hidden="true"></i>
-                        <div class="price-slider">
-                            <label for="price-range">Price Range:</label>
-                            <input type="range" id="price-range" min="0" max="1000" step="5">
-                            <span id="price-range-value-mobile">0</span>
-                        </div>
+                    <div class="price-range">
+                        <h5>Price Range</h5><br>
+                        <div id="price-range-slider"></div><br>
+                        <div id="price-range-value">₹ 0 - ₹ 1000</div>
+                    </div>
+                </div>
                 </div>
             </div>
             <div class="sort-product">
@@ -121,13 +119,15 @@
     </div>
 
 <div class="bottom-nav fixed-bottom">
-    <a href="home.html" class="nav-link"><i class="fa fa-home" aria-hidden="true"></i><p>Home</p></a>
-    <a href="AddToCart.html" class="nav-link"><i id="cart-icon" class="fa fa-shopping-cart cart-icon"
-            aria-hidden="true"></i><p>Cart</p></a>
-    <a href="checkout.html" class="nav-link"><i class="fa fa-credit-card-alt" aria-hidden="true"></i><p>Check</p></a>
-    <a href="wishlist.html" class="nav-link"><i class="fa fa-heart-o" aria-hidden="true"></i><p>Wishlist</p></a>
+    <a href="home.html" class="nav-link"><ion-icon name="home-outline"></ion-icon><p>Home</p></a>
+    <a href="AddToCart.html" class="nav-link"><ion-icon name="cart-outline"></ion-icon><p>Cart</p></a>
+    <a href="checkout.html" class="nav-link"><ion-icon name="bag-check-outline"></ion-icon><p>Check</p></a>
+    <a href="wishlist.html" class="nav-link"><ion-icon name="heart-outline"></ion-icon><p>Wishlist</p></a>
 </div>
 
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="text/javascript" src="./home.js"></script>
 </body>
 

@@ -244,7 +244,7 @@ function createProductCards(products, container, customMessage) {
                    <div class="card">
       <div class="discount-badge">${product.discount}% Off</div>
       <div class="wishlist-badge">
-        <i class="fa fa-heart-o" aria-hidden="true" onclick="addToWishlist(${product.id})"></i>
+      <ion-icon name="heart-outline" onclick="addToWishlist(${product.id})"></ion-icon>
       </div>
       <a href="product.html?id=${product.id}">
         <img src="${product.image[0]}" class="card-img-top">

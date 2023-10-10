@@ -32,7 +32,7 @@ function displayWishlistItems() {
       <div class="card">
         <div class="discount-badge">${item.discount}% Off</div>
         <div class="wishlist-badge">
-        <i class="fa fa-heart" aria-hidden="true"></i>
+        <ion-icon name="heart"></ion-icon>
       </div>
         <img src="${item.image[0]}" class="card-img-top">
         <div class="card-body">
