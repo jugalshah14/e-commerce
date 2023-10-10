@@ -102,7 +102,7 @@ hr {
     display: none !important;
 }
 
-.categorymobile {
+.category-mobile {
     display: none;
 }
 
@@ -187,7 +187,7 @@ input[type="checkbox"]:checked+label {
     font-size: 15px;
 }
 
-.itemsort {
+.item-sort {
     border: 2px solid rgb(229, 229, 229);
     padding: 0px 10px;
     border-radius: 25px;
@@ -196,7 +196,7 @@ input[type="checkbox"]:checked+label {
     font-size: 15px !important;
 }
 
-.itemsort label {
+.item-sort label {
     margin-top: 10px;
     font-size: 15px;
 }
@@ -250,10 +250,23 @@ input[type="checkbox"]:checked+label {
     font-weight: bold;
 }
 
+.wishlist-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: none;
+    color: rgb(167, 160, 159);
+    border-radius: 15px;
+    padding: 5px 10px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 .category-show {
     position: absolute;
-    background-color: rgb(255, 209, 205);
-    color: rgb(244, 118, 109);
+    background-color: rgb(165, 219, 142);
+    color: rgb(0, 159, 34);
     border-radius: 15px;
     padding: 5px 10px;
     font-size: 12px;
@@ -263,7 +276,7 @@ input[type="checkbox"]:checked+label {
 
 .product-title {
     margin-top: 30px;
-    max-height: 3em;
+    height: 3em;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -347,8 +360,8 @@ a {
 
     .col-sm-6 {
         width: 50% !important;
-        padding-right: 10px !important;
-        padding-left: 10px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
     }
 
     .nav {
@@ -367,10 +380,14 @@ a {
     }
 
     .nav-link {
-        height: 30px;
         width: 30px;
         color: rgb(173, 173, 173);
         padding: 0 !important;
+    }
+    .nav-link p{
+        font-size: 10px;
+        color: rgb(173, 173, 173);
+        margin-bottom: 0 !important;
     }
     
     .nav-link.active {
@@ -394,17 +411,17 @@ a {
         width: 100% !important;
     }
 
-    .itemsort {
+    .item-sort {
         font-size: 10px !important;
         width: 100%;
     }
 
-    .itemsort label {
+    .item-sort label {
         font-size: 10px !important;
     }
 
     .row {
-        padding: 0%;
+        padding: 0 5px !important;
         margin-top: 0px !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -438,7 +455,7 @@ a {
         display: block !important;
     }
 
-    .categorymobile {
+    .category-mobile {
         display: block;
     }
 

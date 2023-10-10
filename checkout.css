@@ -48,11 +48,12 @@ hr {
     border-top: 1px solid rgb(229, 229, 229) !important;
 }
 
-.checkout-body{
+.checkout-body {
     margin-top: 30px;
     margin-bottom: 50px;
 }
-.bottom-nav{
+
+.bottom-nav {
     display: none !important;
 }
 
@@ -101,6 +102,7 @@ label {
 .table td {
     vertical-align: middle;
 }
+
 .product-title {
     max-width: 100px;
     white-space: nowrap;
@@ -120,6 +122,7 @@ label {
 .modal-footer {
     justify-content: center;
 }
+
 .place-order {
     background-color: #007481 !important;
     color: white;
@@ -131,30 +134,36 @@ label {
     text-decoration: none;
     transition: background-color 0.3s ease-in-out;
 }
+
 @media only screen and (max-width: 768px) {
     .nav {
-            display: none !important;
-        }
-    
-        .bottom-nav {
-            display: flex !important;
-            width: 100% !important;
-            border-top: 1px solid rgb(229, 229, 229);
-            justify-content: space-between !important;
-            align-items: center;
-            text-align: center;
-            padding: 10px 30px;
-            background-color: white !important;
-        }
-    
-                .nav-link {
-                    height: 30px;
-                    width: 30px;
-                    color: rgb(173, 173, 173);
-                    padding: 0 !important;
-                }
-        
-                .nav-link.active {
-                    color: #007481;
-                }
+        display: none !important;
+    }
+
+    .bottom-nav {
+        display: flex !important;
+        width: 100% !important;
+        border-top: 1px solid rgb(229, 229, 229);
+        justify-content: space-between !important;
+        align-items: center;
+        text-align: center;
+        padding: 10px 30px;
+        background-color: white !important;
+    }
+
+    .nav-link {
+        width: 30px;
+        color: rgb(173, 173, 173);
+        padding: 0 !important;
+    }
+
+    .nav-link p {
+        font-size: 10px;
+        color: rgb(173, 173, 173);
+        margin-bottom: 0 !important;
+    }
+
+    .nav-link.active {
+        color: #007481;
+    }
 }

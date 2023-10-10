@@ -241,33 +241,56 @@ function createProductCards(products, container, customMessage) {
     );
 
     cardDiv.innerHTML = `
-                    <div class="card">
-                    <div class="discount-badge">${product.discount}% Off</div>
-                    <a href="product.html?id=${product.id}">
-                        <img src="${product.image[0]}" class="card-img-top"></a>
-                        <div class="card-body">
-                        <p class="category-show">${product.category}</p>
-                         <div class="product-title">
-                          <h5 class="card-title">${product.title}</h5>
-                        </div>
-                            <p class="card-text">
-                               <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
-                            </p>                                                    
-                        </div>
-                        </div>
-                    </div>
-                `;
-
-    // const addToCartBtn = cardDiv.querySelector(".addToCartBtn");
-    // addToCartBtn.addEventListener("click", () => {
-    //   addToCart(product, addToCartBtn, customMessage, discountedPrice);
-    // });
+                   <div class="card">
+      <div class="discount-badge">${product.discount}% Off</div>
+      <div class="wishlist-badge">
+        <i class="fa fa-heart-o" aria-hidden="true" onclick="addToWishlist(${product.id})"></i>
+      </div>
+      <a href="product.html?id=${product.id}">
+        <img src="${product.image[0]}" class="card-img-top">
+      </a>
+      <div class="card-body">
+        <p class="category-show">${product.category}</p>
+        <div class="product-title">
+          <h5 class="card-title">${product.title}</h5>
+        </div>
+        <p class="card-text">
+          <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
+        </p>
+      </div>
+    </div>
+  `;
 
     row.appendChild(cardDiv);
     cardCount++;
   });
 
   container.appendChild(row);
+}
+function addToWishlist(productId) {
+  // Retrieve the product from local storage based on productId
+  const products = JSON.parse(localStorage.getItem("products")) || [];
+  const product = products.find((p) => p.id === productId);
+
+  if (product) {
+    // Retrieve the current wishlist from local storage or initialize an empty array
+    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    // Check if the product is already in the wishlist
+    const isProductInWishlist = wishlist.some((p) => p.id === productId);
+
+    if (!isProductInWishlist) {
+      // Add the product to the wishlist in local storage
+      wishlist.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+
+      // Show a toast message indicating that the product has been added to the wishlist
+      showToast("Product added to wishlist");
+    } else {
+      // Product is already in the wishlist, show a toast message indicating that
+      showToast("Product is already in the wishlist");
+    }
+  }
 }
 
 const priceRangeSlider = document.getElementById("price-range-slider");
@@ -366,12 +389,11 @@ function findMaxPriceInLocalStorage() {
       }
 
       return maxPrice;
-    } else {
-      return "No products found in local storage.";
     }
-  } else {
-    return "Local storage is empty or 'products' key is not set.";
   }
+
+  // Return a default range if there are no products or the 'products' key is not set
+  return 100; // Example default range: 0 to 100
 }
 
 document.addEventListener("DOMContentLoaded", function () {
