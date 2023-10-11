@@ -147,6 +147,15 @@ function updatePaginationUI(filteredProducts, paginationContainer) {
 
   prevPageButton.disabled = currentPage === 1;
   nextPageButton.disabled = currentPage === totalPages;
+
+  // Hide "Next" and "Previous" buttons if there's only one page
+  if (totalPages === 1) {
+    prevPageButton.style.display = "none";
+    nextPageButton.style.display = "none";
+  } else {
+    prevPageButton.style.display = "block";
+    nextPageButton.style.display = "block";
+  }
 }
 
 prevPageButton.addEventListener("click", () => {
@@ -267,6 +276,7 @@ function createProductCards(products, container, customMessage) {
 
   container.appendChild(row);
 }
+
 function addToWishlist(productId) {
   // Retrieve the product from local storage based on productId
   const products = JSON.parse(localStorage.getItem("products")) || [];

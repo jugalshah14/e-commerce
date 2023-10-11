@@ -30,7 +30,7 @@ label {
     h4,
     h5,
     h6 {
-        font-size: 1.2rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -258,7 +258,7 @@ input[type="checkbox"]:checked+label {
 
 .sort-product {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     justify-content: end;
     margin: 20px 20px;
 }
@@ -364,6 +364,7 @@ a {
 
 #prev-page,
 #next-page {
+    display: none;
     background-color: #007481 !important;
     border: none;
     padding: 5px 20px !important;
@@ -391,8 +392,201 @@ a {
 }
 
 .pagination button.active {
-    background-color: rgb(90, 90, 236) !important;
+    background-color: #007481 !important;
     color: white;
+}
+
+@media only screen and (max-width:1024px) {
+    label {
+            font-size: 0.6rem !important;
+        }
+    
+        .col-lg-10 {
+            max-width: 100% !important;
+            flex: 100% !important;
+            padding-right: 0 !important;
+            padding-left: 0 !important;
+        }
+    
+        .main-body {
+            display: flex;
+            padding: 10px;
+            padding-bottom: 0;
+        }
+    
+        .col-sm-6 {
+            width: 50% !important;
+            padding-right: 5px !important;
+            padding-left: 5px !important;
+        }
+    
+        .nav {
+            display: none !important;
+        }
+    
+        .bottom-nav {
+            display: flex !important;
+            width: 100% !important;
+            border-top: 1px solid rgb(229, 229, 229);
+            justify-content: space-between !important;
+            align-items: center;
+            text-align: center;
+            padding: 10px 30px;
+            background-color: white !important;
+        }
+    
+        .nav-link {
+            width: 30px;
+            color: rgb(173, 173, 173);
+            padding: 0 !important;
+        }
+    
+        .nav-link p {
+            font-size: 0.6rem;
+            color: rgb(173, 173, 173);
+            margin-bottom: 0 !important;
+        }
+    
+        .nav-link.active {
+            color: #007481;
+        }
+    
+        .side-bar {
+            padding: 0;
+            display: none !important;
+        }
+    
+        .category {
+            margin-top: 0;
+        }
+    
+        .vl {
+            display: none !important;
+        }
+    
+        .sorts {
+            width: 100% !important;
+        }
+    
+        .item-sort {
+            font-size: 0.6rem !important;
+            width: 100%;
+        }
+    
+    
+        .row {
+            padding: 0 5px !important;
+            margin-top: 0px !important;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    
+        .input-group {
+            gap: 10px;
+            margin-bottom: 0 !important;
+        }
+    
+        #sort-container {
+            margin-bottom: 0px;
+            font-size: 0.6rem !important;
+            width: 100%;
+        }
+    
+        #sort-dropdown {
+            width: 50% !important;
+        }
+    
+        .sort-product {
+            padding: 10px;
+            margin: 0;
+        }
+    
+        .fa-filter {
+            display: block !important;
+        }
+    
+        .category-mobile {
+            display: block;
+        }
+    
+        #CategoryFilter {
+            margin-top: 20px;
+            display: flex;
+            margin-bottom: 20px;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            align-items: flex-start;
+        }
+    
+        .card-body {
+            padding: 10px !important;
+        }
+    
+        .card img {
+            height: 150px;
+        }
+    
+        .discount-badge {
+            font-size: 0.6rem !important;
+        }
+    
+        .category-show {
+            font-size: 0.6rem;
+        }
+    
+        .card-title {
+            font-size: 0.8rem;
+        }
+    
+        .card-text {
+            font-size: 1rem;
+        }
+    
+        .menu-icon {
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+            width: 45px;
+            border: 2px solid rgb(229, 229, 229) !important;
+            border-radius: 50%;
+            padding: 10px;
+        }
+    
+        .buttons {
+            margin-bottom: 50px;
+        }
+    
+        .right-body {
+            padding: 20px;
+        }
+    
+        #right-menu {
+            display: block;
+            position: fixed;
+            right: -300px;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease-in-out;
+            z-index: 2000;
+        }
+    
+        #right-menu.show {
+            right: 0;
+        }
+    
+        #close-button {
+            width: 30px !important;
+            height: 30px !important;
+            left: 230px;
+            position: relative;
+        }
+    
 }
 
 
