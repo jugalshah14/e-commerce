@@ -31,7 +31,7 @@
             <div class="col-1">
                 <form>
                     <a href="AddToCart.html"><ion-icon name="cart-outline"></ion-icon></i></a>
-                        <a href="wishlist.html"><ion-icon name="heart-outline"></ion-icon></a>
+                    <a href="wishlist.html"><ion-icon name="heart-outline"></ion-icon></a>
                 </form>
             </div>
         </div>
@@ -57,56 +57,56 @@
         <div class="col-lg-10 col-md-9">
             <div class="main-body">
                 <div class="input-group">
-                    <input type="text" id="search-input" class="form-control" placeholder="Search by title" oninput="performSearch()">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search by title"
+                        oninput="performSearch()">
                     <div class="menu-icon">
                         <ion-icon name="filter-outline"></ion-icon>
                     </div>
-                </div>                
-                <div id="right-menu" class="hidden">                  
+                </div>
+                <div id="right-menu" class="hidden">
                     <ion-icon name="close-outline" id="close-button"></ion-icon>
                     <div class="right-body">
-                    <div class="category-mobile">
-                        <div class="category">
-                            <h4>Category</h4>
-                            <div id="CategoryFilter">
-                                <div>
-                                    <input type="checkbox" value="" checked>
+                        <div class="category-mobile">
+                            <div class="category">
+                                <h4>Category</h4>
+                                <div id="CategoryFilter">
+                                    <div>
+                                        <input type="checkbox" value="" checked>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="price-range">
+                            <h5>Price Range</h5><br>
+                            <div id="price-range-slider"></div><br>
+                            <div id="price-range-value">₹ 0 - ₹ 1000</div>
+                        </div>
                     </div>
-                    <div class="price-range">
-                        <h5>Price Range</h5><br>
-                        <div id="price-range-slider"></div><br>
-                        <div id="price-range-value">₹ 0 - ₹ 1000</div>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="sort-product">
-                            <div class="item-sort">
-                            <label for="itemsPerPage">Show :</label>
-                            <select id="itemsPerPage">
-                                <option value="4">4 Items</option>
-                                <option value="8" selected>8 Items</option>
-                                <option value="12">12 Items</option>
-                            </select>
-                            </div>
-                            <div id="sort-container">
-                                <label for="sort-dropdown">Sort by : </label>
-                                <select id="sort-dropdown">
-                                    <option value="defaultSort" selected><b>Price</b></option>
-                                    <option value="low-to-high"><b>Price: Low to High</b></option>
-                                    <option value="high-to-low"><b>Price: High to Low</b></option>
-                                </select>
-                            </div>
-                        </div>
+                <div class="item-sort">
+                    <label for="itemsPerPage">Show :</label>
+                    <select id="itemsPerPage">
+                        <option value="4">4 Items</option>
+                        <option value="8" selected>8 Items</option>
+                        <option value="12">12 Items</option>
+                    </select>
+                </div>
+                <div id="sort-container">
+                    <label for="sort-dropdown">Sort by : </label>
+                    <select id="sort-dropdown">
+                        <option value="defaultSort" selected><b>Price</b></option>
+                        <option value="low-to-high"><b>Price: Low to High</b></option>
+                        <option value="high-to-low"><b>Price: High to Low</b></option>
+                    </select>
+                </div>
+            </div>
             <div id="no-products-found" style="display: none;">
-                <img src="https://evgracias.com/images/no-products.jpg"
-                    alt="No Product Found">
+                <img src="https://evgracias.com/images/no-products.jpg" alt="No Product Found">
             </div>
             <div id="product-container" class="product-container">
-                
+
             </div>
             <div id="pagination" class="pagination"></div>
             <div class="buttons">
@@ -118,14 +118,22 @@
     </div>
     </div>
 
-<div class="bottom-nav fixed-bottom">
-    <a href="home.html" class="nav-link"><ion-icon name="home-outline"></ion-icon><p>Home</p></a>
-    <a href="AddToCart.html" class="nav-link"><ion-icon name="cart-outline"></ion-icon><p>Cart</p></a>
-    <a href="checkout.html" class="nav-link"><ion-icon name="bag-check-outline"></ion-icon><p>Check</p></a>
-    <a href="wishlist.html" class="nav-link"><ion-icon name="heart-outline"></ion-icon><p>Wishlist</p></a>
-</div>
+    <div class="bottom-nav fixed-bottom">
+        <a href="home.html" class="nav-link"><ion-icon name="home-outline"></ion-icon>
+            <p>Home</p>
+        </a>
+        <a href="AddToCart.html" class="nav-link"><ion-icon name="cart-outline"></ion-icon>
+            <p>Cart</p>
+        </a>
+        <a href="checkout.html" class="nav-link"><ion-icon name="bag-check-outline"></ion-icon>
+            <p>Check</p>
+        </a>
+        <a href="wishlist.html" class="nav-link"><ion-icon name="heart-outline"></ion-icon>
+            <p>Wishlist</p>
+        </a>
+    </div>
 
-    
+
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="text/javascript" src="./home.js"></script>
