@@ -3,6 +3,36 @@
 * {
     font-family: 'Poppins';
 }
+label {
+    font-size: 1rem;
+    margin-bottom: 0px !important;
+}
+
+/* Larger font size for screens with a max-width of 768px */
+@media (max-width: 768px) {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Even larger font size for screens with a max-width of 480px */
+@media (max-width: 480px) {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-size: 1.2rem !important;
+    }
+}
 
 .nav {
     flex-direction: column;
@@ -84,7 +114,7 @@ hr {
     top: 5px;
     right: 5px;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 1.8rem;
     font-weight: bold;
     color: black;
     background-color: transparent;
@@ -198,31 +228,23 @@ input[type="checkbox"]:checked+label {
 #sort-container {
     text-align: end;
     border: 2px solid rgb(229, 229, 229);
-    padding: 0px 10px;
+    padding: 10px;
     border-radius: 25px;
     align-items: center;
     display: flex;
     font-size: 1rem !important;
 }
 
-#sort-container label {
-    margin-top: 10px;
-    font-size: 1rem;
-}
 
 .item-sort {
     border: 2px solid rgb(229, 229, 229);
-    padding: 0px 10px;
+    padding: 10px;
     border-radius: 25px;
     align-items: center;
     display: flex;
     font-size: 1rem !important;
 }
 
-.item-sort label {
-    margin-top: 10px;
-    font-size: 1rem;
-}
 
 #no-products-found {
     width: 100%;
@@ -287,18 +309,17 @@ input[type="checkbox"]:checked+label {
 }
 
 .category-show {
-    position: absolute;
     background-color: rgb(165, 219, 142);
     color: rgb(0, 159, 34);
     border-radius: 15px;
     padding: 5px 10px;
     font-size: 0.8rem;
     font-weight: bold;
+    width: max-content;
     
 }
 
 .product-title {
-    margin-top: 30px;
     height: 3em;
     overflow: hidden;
     display: -webkit-box;
@@ -311,7 +332,6 @@ input[type="checkbox"]:checked+label {
 
 
 .card-text {
-    margin-top: 50px;
     color: black;
     font-size: 1.4rem;
 }
@@ -339,6 +359,7 @@ a {
 .buttons {
     display: flex;
     justify-content: space-between;
+    padding: 0px 15px;
 }
 
 #prev-page,
@@ -358,8 +379,11 @@ a {
 
 .pagination button {
     background-color: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 50% ;
+    color: black;
     border: none;
-    color: grey;
 }
 
 .category {
@@ -367,11 +391,15 @@ a {
 }
 
 .pagination button.active {
-    color: black;
+    background-color: rgb(90, 90, 236) !important;
+    color: white;
 }
 
 
 @media only screen and (max-width: 768px) {
+    label{
+        font-size: 0.6rem !important;
+    }
     .col-lg-10{
         padding-right: 0 !important ;
         padding-left: 0 !important;
@@ -409,7 +437,7 @@ a {
         padding: 0 !important;
     }
     .nav-link p{
-        font-size: 10px;
+        font-size: 0.6rem;
         color: rgb(173, 173, 173);
         margin-bottom: 0 !important;
     }
@@ -436,13 +464,10 @@ a {
     }
 
     .item-sort {
-        font-size: 10px !important;
+        font-size: 0.6rem !important;
         width: 100%;
     }
 
-    .item-sort label {
-        font-size: 10px !important;
-    }
 
     .row {
         padding: 0 5px !important;
@@ -458,12 +483,8 @@ a {
 
     #sort-container {
         margin-bottom: 0px;
-        font-size: 10px !important;
+        font-size: 0.6rem !important;
         width: 100%;
-    }
-
-    #sort-container label {
-        font-size: 10px !important;
     }
 
     #sort-dropdown {
@@ -493,10 +514,6 @@ a {
         align-items: flex-start;
     }
 
-    #CategoryFilter label{
-        margin-top: -27px;
-    }
-
     .card-body {
         padding: 10px !important;
     }
@@ -506,11 +523,11 @@ a {
     }
 
     .discount-badge {
-        font-size: 10px !important;
+        font-size: 0.6rem !important;
     }
 
     .category-show {
-        font-size: 10px;
+        font-size: 0.6rem;
     }
 
     .card-title {
@@ -518,7 +535,6 @@ a {
     }
 
     .card-text {
-        margin-top: 10px;
         font-size: 1rem;
     }
 
@@ -561,5 +577,7 @@ a {
     #close-button{
         width: 30px !important;
         height: 30px !important;
+        left: 230px;
+        position: relative;
     }
 }
