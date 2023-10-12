@@ -17,7 +17,7 @@ label {
     h4,
     h5,
     h6 {
-        font-size: 1.5rem !important;
+        font-size: 1rem !important;
     }
 }
 
@@ -146,6 +146,11 @@ hr {
 }
 
 #search-input {
+    border-radius: 25px;
+    padding: 20px;
+    border: 2px solid rgb(229, 229, 229);
+}
+#search-input1 {
     border-radius: 25px;
     padding: 20px;
     border: 2px solid rgb(229, 229, 229);
@@ -356,19 +361,12 @@ a {
     transition: background-color 0.3s ease-in-out;
 }
 
-.buttons {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 15px;
-}
-
 #prev-page,
 #next-page {
-    display: none;
     background-color: #007481 !important;
     border: none;
-    padding: 5px 20px !important;
-    border-radius: 25px !important;
+    padding: 0px !important;
+    padding-top: 5px !important;
     border-color: none !important;
 }
 
@@ -414,12 +412,6 @@ a {
             padding-bottom: 0;
         }
     
-        .col-sm-6 {
-            width: 50% !important;
-            padding-right: 5px !important;
-            padding-left: 5px !important;
-        }
-    
         .nav {
             display: none !important;
         }
@@ -455,6 +447,23 @@ a {
             padding: 0;
             display: none !important;
         }
+
+                #CategoryFilter1 {
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+                    gap: 10px;
+                }
+        
+                #CategoryFilter1 label {
+                    margin-right: 10px;
+                    font-size: 1rem;
+                    color: #333;
+                    margin-top: -27px;
+                    margin-left: 40px;
+                }
     
         .category {
             margin-top: 0;

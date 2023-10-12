@@ -2,6 +2,7 @@ const paginationContainer = document.getElementById("pagination");
 let itemsPerPage = 8;
 let currentPage = 1;
 let filteredProducts = [];
+let filteredProducts1 = [];
 
 function updateItemsPerPage() {
   if (window.innerWidth <= 768) {
@@ -23,7 +24,6 @@ function updateItemsPerPage() {
 const itemsPerPageDropdown = document.getElementById("itemsPerPage");
 itemsPerPageDropdown.addEventListener("change", updateItemsPerPage);
 
-// Call the function initially and listen for window resize events
 window.addEventListener("resize", updateItemsPerPage);
 
 // function updateCartBadge() {
@@ -33,7 +33,6 @@ window.addEventListener("resize", updateItemsPerPage);
 //   cartBadge.textContent = numItemsInCart.toString();
 // }
 
-// Add this function to your addToCart function to trigger badge update
 function addToCart(product, button, customMessage, discountedPrice) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -53,8 +52,7 @@ function addToCart(product, button, customMessage, discountedPrice) {
     showToast(customMessage || "Product added to cart");
 
     button.disabled = true;
-    // Update the cart badge after adding a product
-    updateCartBadge();
+    // updateCartBadge();
   }
 }
 function showToast(message) {
@@ -100,6 +98,18 @@ function performSearch() {
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 }
+function performSearch1() {
+  const searchInput = document.getElementById("search-input1");
+  const searchTerm = searchInput.value.toLowerCase().trim();
+
+  filteredProducts = products.filter((product) =>
+    product.title.toLowerCase().includes(searchTerm)
+  );
+
+  currentPage = 1;
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
+}
 
 function displayProductsOnPage(products, container, page) {
   const start = (page - 1) * itemsPerPage;
@@ -127,7 +137,10 @@ const nextPageButton = document.getElementById("next-page");
 function updatePaginationUI(filteredProducts, paginationContainer) {
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  paginationContainer.innerHTML = "";
+  paginationContainer.innerHTML = ""; // Clear the paginationContainer
+
+  // Add the "Previous" button
+  paginationContainer.appendChild(prevPageButton);
 
   for (let i = 1; i <= totalPages; i++) {
     const pageButton = document.createElement("button");
@@ -145,17 +158,8 @@ function updatePaginationUI(filteredProducts, paginationContainer) {
     paginationContainer.appendChild(pageButton);
   }
 
-  prevPageButton.disabled = currentPage === 1;
-  nextPageButton.disabled = currentPage === totalPages;
-
-  // Hide "Next" and "Previous" buttons if there's only one page
-  if (totalPages === 1) {
-    prevPageButton.style.display = "none";
-    nextPageButton.style.display = "none";
-  } else {
-    prevPageButton.style.display = "block";
-    nextPageButton.style.display = "block";
-  }
+  // Add the "Next" button
+  paginationContainer.appendChild(nextPageButton);
 }
 
 prevPageButton.addEventListener("click", () => {
@@ -174,6 +178,7 @@ nextPageButton.addEventListener("click", () => {
     updatePaginationUI(filteredProducts, paginationContainer);
   }
 });
+
 const products = [];
 
 const productContainer = document.getElementById("product-container");
@@ -204,23 +209,18 @@ function sortProducts() {
   updatePaginationUI(filteredProducts, paginationContainer);
 }
 
-// Get references to the icon and the right-side menu
-// Get references to the icon, the close button, and the right-side menu
 const icon = document.querySelector(".menu-icon");
 const menu = document.getElementById("right-menu");
 const closeButton = document.getElementById("close-button");
 
-// Function to open the menu
 function openMenu() {
   menu.classList.add("show");
 }
 
-// Function to close the menu
 function closeMenu() {
   menu.classList.remove("show");
 }
 
-// Add click event listeners to the icon and the close button
 icon.addEventListener("click", openMenu);
 closeButton.addEventListener("click", closeMenu);
 
@@ -242,7 +242,7 @@ function createProductCards(products, container, customMessage) {
     }
 
     const cardDiv = document.createElement("div");
-    cardDiv.className = "col-lg-3 col-md-6 col-sm-6";
+    cardDiv.className = "col-lg-3 col-sm-6 ";
 
     const originalPrice = product.price;
     const discountedPrice = Math.round(
@@ -306,22 +306,19 @@ function addToWishlist(productId) {
 const priceRangeSlider = document.getElementById("price-range-slider");
 const priceRangeValue = document.getElementById("price-range-value");
 
-// Initialize the dual-range slider
 noUiSlider.create(priceRangeSlider, {
-  start: [0, findMaxPriceInLocalStorage()], // Initial values for min and max
-  connect: true, // Connect the two handles
+  start: [0, findMaxPriceInLocalStorage()],
+  connect: true,
   range: {
     min: 0,
-    max: findMaxPriceInLocalStorage(), // Set the maximum value dynamically
+    max: findMaxPriceInLocalStorage(),
   },
 });
 
-// Update the price range display when the slider values change
-priceRangeSlider.noUiSlider.on("update", (values, handle) => {
+priceRangeSlider.noUiSlider.on("update", (values) => {
   const [minValue, maxValue] = values;
   priceRangeValue.textContent = `₹ ${minValue} - ₹ ${maxValue}`;
 
-  // Filter products automatically as the user moves the sliders
   const minPrice = parseFloat(minValue);
   const maxPrice = parseFloat(maxValue);
   filteredProducts = products.filter((product) => {
@@ -335,6 +332,57 @@ priceRangeSlider.noUiSlider.on("update", (values, handle) => {
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 });
+
+const priceRangeSlider1 = document.getElementById("price-range-slider1");
+const priceRangeValue1 = document.getElementById("price-range-value1");
+
+noUiSlider.create(priceRangeSlider1, {
+  start: [0, findMaxPriceInLocalStorage()],
+  connect: true,
+  range: {
+    min: 0,
+    max: findMaxPriceInLocalStorage(),
+  },
+});
+
+priceRangeSlider1.noUiSlider.on("update", (values) => {
+  const [minValue, maxValue] = values;
+  priceRangeValue1.textContent = `₹ ${minValue} - ₹ ${maxValue}`;
+
+  const minPrice = parseFloat(minValue);
+  const maxPrice = parseFloat(maxValue);
+  filteredProducts = products.filter((product) => {
+    const discountedPrice = Math.round(
+      product.price * (1 - product.discount / 100)
+    );
+    return discountedPrice >= minPrice && discountedPrice <= maxPrice;
+  });
+
+  currentPage = 1;
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
+});
+
+function findMaxPriceInLocalStorage() {
+  const productsJSON = localStorage.getItem("products");
+
+  if (productsJSON) {
+    const products = JSON.parse(productsJSON);
+
+    if (Array.isArray(products) && products.length > 0) {
+      let maxPrice = products[0].price;
+
+      for (const product of products) {
+        if (product.price > maxPrice) {
+          maxPrice = product.price;
+        }
+      }
+
+      return maxPrice;
+    }
+  }
+  return 100;
+}
 
 function populateCategoryCheckboxes() {
   const categoryFilter = document.getElementById("CategoryFilter");
@@ -375,36 +423,51 @@ function filterProductsByCategory() {
   updatePaginationUI(filteredProducts, paginationContainer);
 }
 
-// Add an event listener to call the filter function
 const categoryFilter = document.getElementById("CategoryFilter");
 categoryFilter.addEventListener("change", filterProductsByCategory);
 
-function findMaxPriceInLocalStorage() {
-  // Get the products from local storage
-  const productsJSON = localStorage.getItem("products");
+function populateCategoryCheckboxes1() {
+  const categoryFilter1 = document.getElementById("CategoryFilter1");
+  const categories = JSON.parse(localStorage.getItem("categories")) || [];
 
-  if (productsJSON) {
-    // Parse the JSON data into an array
-    const products = JSON.parse(productsJSON);
+  categoryFilter1.innerHTML = "";
 
-    if (Array.isArray(products) && products.length > 0) {
-      // Initialize maxPrice with the price of the first product
-      let maxPrice = products[0].price;
+  categories.forEach((category) => {
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = category.name;
+    checkbox.value = category.name;
+    const label = document.createElement("label");
+    label.htmlFor = category.name;
+    label.textContent = category.name;
 
-      // Iterate through the products and update maxPrice if a higher price is found
-      for (const product of products) {
-        if (product.price > maxPrice) {
-          maxPrice = product.price;
-        }
-      }
+    categoryFilter1.appendChild(checkbox);
+    categoryFilter1.appendChild(label);
+  });
+}
 
-      return maxPrice;
-    }
+function filterProductsByCategory1() {
+  const checkboxes = document.querySelectorAll("input[type='checkbox']");
+  const selectedCategories = Array.from(checkboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.value);
+
+  if (selectedCategories.length === 0 || selectedCategories.includes("")) {
+    filteredProducts = products;
+  } else {
+    filteredProducts = products.filter((product) =>
+      selectedCategories.includes(product.category.toLowerCase())
+    );
   }
 
-  // Return a default range if there are no products or the 'products' key is not set
-  return 100; // Example default range: 0 to 100
+  currentPage = 1;
+  displayProductsOnPage(filteredProducts, productContainer, currentPage);
+  updatePaginationUI(filteredProducts, paginationContainer);
 }
+
+// Add an event listener to call the filter function
+const categoryFilter1 = document.getElementById("CategoryFilter1");
+categoryFilter1.addEventListener("change", filterProductsByCategory1);
 
 document.addEventListener("DOMContentLoaded", function () {
   // Get the current URL
@@ -439,6 +502,7 @@ localStorage.setItem("products", JSON.stringify(formDataFromLocalStorage));
 products.push(...formDataFromLocalStorage);
 filteredProducts = [...products];
 populateCategoryCheckboxes();
+populateCategoryCheckboxes1();
 createProductCards(filteredProducts, productContainer, "Product added to cart");
 displayProductsOnPage(filteredProducts, productContainer, currentPage);
 updatePaginationUI(filteredProducts, paginationContainer);
