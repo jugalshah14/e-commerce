@@ -95,9 +95,15 @@ function performSearch() {
   );
 
   currentPage = 1;
+
+  // Create a message to display the number of matching products
+  const searchResultMessage = document.getElementById("search-result-message");
+  searchResultMessage.textContent = `Showing ${filteredProducts.length} items for "${searchTerm}" on the website`;
+
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
 }
+
 function performSearch1() {
   const searchInput = document.getElementById("search-input1");
   const searchTerm = searchInput.value.toLowerCase().trim();
@@ -261,7 +267,7 @@ function createProductCards(products, container, customMessage) {
       <div class="card-body">
         <p class="category-show">${product.category}</p>
         <div class="product-title">
-          <h5 class="card-title">${product.title}</h5>
+          <h6 class="card-title">${product.title}</h6>
         </div>
         <p class="card-text">
           <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>

@@ -113,15 +113,15 @@ hr {
 }
 
 .mob-bottom {
-  margin-left: 400px;
-  position: fixed;
-  bottom: 50px;
-  left: 0;
-  width: 50%;
-  gap: 40px;
   display: flex !important;
   justify-content: space-between;
   align-items: center;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.mob-bottom p{
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -200,5 +200,11 @@ hr {
     display: flex !important;
     justify-content: center;
     align-items: center;
+    flex-direction: row;
+    height: 70px;
+  }
+  .mob-bottom p{
+    display: block;
+    margin-bottom: 0 !important;
   }
 }

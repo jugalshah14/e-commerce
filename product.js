@@ -43,7 +43,7 @@ if (product) {
                 <p>Quantity: ${product.availableQuantity}</p>
                 </div>
             <div class="mob-bottom">
-                <p style="margin-top: 20px">Price : ₹ ${discountedPrice}</p>
+                <p>Price : ₹ ${discountedPrice}</p>
                 <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
             </div>
         </div>

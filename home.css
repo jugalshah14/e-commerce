@@ -4,7 +4,7 @@
     font-family: 'Poppins';
 }
 label {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-bottom: 0px !important;
 }
 
@@ -174,13 +174,13 @@ hr {
     display: flex;
     flex-direction: column;
     text-align: left;
+    gap: 15px;
 }
 
 #CategoryFilter label {
     margin-right: 10px;
-    font-size: 1rem;
     color: #333;
-    margin-top: -22px;
+    margin-top: -35px;
     margin-left: 40px;
 }
 
@@ -227,6 +227,7 @@ input[type="checkbox"]:checked+label {
 #itemsPerPage {
     border: none !important;
     background-color: rgb(251, 251, 251) !important;
+    font-size: 0.8rem;
 }
 
 
@@ -261,11 +262,17 @@ input[type="checkbox"]:checked+label {
     height: 50%;
 }
 
+.top-sort{
+    display: flex;
+    margin: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .sort-product {
     display: flex;
     gap: 20px;
     justify-content: end;
-    margin: 20px 20px;
 }
 
 .card {
@@ -273,6 +280,7 @@ input[type="checkbox"]:checked+label {
     border-radius: 20px !important;
     margin-bottom: 20px;
     overflow: hidden;
+    background-color: rgb(251, 251, 251) !important;
     transition: transform 0.3s ease-in-out;
     padding: 5px;
 }
@@ -281,11 +289,15 @@ input[type="checkbox"]:checked+label {
     transform: scale(1.05);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
+.card a{
+    background-color: rgb(244, 244, 244);
+    border-radius: 20px;
+    object-fit: cover !important;
+}
 
 .card img {
     object-fit: contain;
     height: 250px;
-
 }
 
 .discount-badge {
@@ -349,16 +361,12 @@ a {
     text-decoration: none;
 }
 
-.addToCartBtn {
-    background-color: #007481 !important;
-    color: white;
-    width: 50%;
-    border: none;
-    padding: 5px 20px !important;
-    border-radius: 25px !important;
-    border-color: none !important;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
+.category {
+    margin-top: 20px;
+}
+
+.price-range {
+    margin-top: 40px;
 }
 
 #prev-page,
@@ -383,10 +391,6 @@ a {
     border-radius: 50% ;
     color: black;
     border: none;
-}
-
-.category {
-    margin-top: 50px;
 }
 
 .pagination button.active {
@@ -465,10 +469,6 @@ a {
                     margin-left: 40px;
                 }
     
-        .category {
-            margin-top: 0;
-        }
-    
         .vl {
             display: none !important;
         }
@@ -481,7 +481,13 @@ a {
             font-size: 0.6rem !important;
             width: 100%;
         }
-    
+        .top-sort{
+            display: block;
+            margin: 0;
+        }
+        .search-result-message{
+            display: none;
+        }
     
         .row {
             padding: 0 5px !important;
@@ -501,8 +507,10 @@ a {
             width: 100%;
         }
     
-        #sort-dropdown {
+        #sort-dropdown,
+        #itemsPerPage {
             width: 50% !important;
+            font-size: 9.6px !important;
         }
     
         .sort-product {
@@ -652,10 +660,6 @@ a {
     .side-bar {
         padding: 0;
         display: none !important;
-    }
-
-    .category {
-        margin-top: 0;
     }
 
     .vl {
