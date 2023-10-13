@@ -19,10 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
       totalPriceElement.style.display = "none";
       totalDiscountedPriceElement.style.display = "none";
       totalItemsElement.textContent = "0";
+      document.querySelector(".checkout").style.display = "none";
     } else {
       let totalPrice = 0;
       let totalDiscountedPrice = 0;
       let totalItems = 0;
+      document.querySelector(".checkout").style.display = "block";
 
       cart.forEach((product, index) => {
         const cartItemDiv = document.createElement("div");
