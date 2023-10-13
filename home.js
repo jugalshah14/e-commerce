@@ -90,15 +90,28 @@ function performSearch() {
   const searchInput = document.getElementById("search-input");
   const searchTerm = searchInput.value.toLowerCase().trim();
 
-  filteredProducts = products.filter((product) =>
-    product.title.toLowerCase().includes(searchTerm)
-  );
+  if (searchTerm === "") {
+    const searchResultMessage = document.getElementById(
+      "search-result-message"
+    );
+    searchResultMessage.style.display = "none";
+    filteredProducts = products; // Reset filteredProducts to the original array
+  } else {
+    filteredProducts = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm)
+    );
+  }
 
   currentPage = 1;
 
-  // Create a message to display the number of matching products
   const searchResultMessage = document.getElementById("search-result-message");
   searchResultMessage.textContent = `Showing ${filteredProducts.length} items for "${searchTerm}" on the website`;
+
+  if (filteredProducts.length === 0) {
+    searchResultMessage.style.display = "none"; // Hide the message if there are no matching products
+  } else {
+    searchResultMessage.style.display = "block";
+  }
 
   displayProductsOnPage(filteredProducts, productContainer, currentPage);
   updatePaginationUI(filteredProducts, paginationContainer);
@@ -143,9 +156,16 @@ const nextPageButton = document.getElementById("next-page");
 function updatePaginationUI(filteredProducts, paginationContainer) {
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-  paginationContainer.innerHTML = ""; // Clear the paginationContainer
+  paginationContainer.innerHTML = "";
 
-  // Add the "Previous" button
+  if (totalPages <= 1 || filteredProducts.length === 0) {
+    prevPageButton.style.display = "none";
+    nextPageButton.style.display = "none";
+  } else {
+    prevPageButton.style.display = "block"; // Set to "block" to display the buttons
+    nextPageButton.style.display = "block"; // Set to "block" to display the buttons
+  }
+
   paginationContainer.appendChild(prevPageButton);
 
   for (let i = 1; i <= totalPages; i++) {
@@ -164,7 +184,6 @@ function updatePaginationUI(filteredProducts, paginationContainer) {
     paginationContainer.appendChild(pageButton);
   }
 
-  // Add the "Next" button
   paginationContainer.appendChild(nextPageButton);
 }
 

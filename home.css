@@ -1,39 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap');
-
-* {
-    font-family: 'Poppins';
-}
-
-label {
-    font-size: 0.8rem;
-    margin-bottom: 0px !important;
-}
-
-/* Larger font size for screens with a max-width of 768px */
-@media (max-width: 768px) {
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: 1rem !important;
-    }
-}
-
-/* Even larger font size for screens with a max-width of 480px */
-@media (max-width: 480px) {
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-size: 1rem !important;
-    }
-}
 
 .nav {
     flex-direction: column;
@@ -330,8 +294,8 @@ input[type="checkbox"]:checked+label {
 }
 
 .category-show {
-    background-color: rgb(165, 219, 142);
-    color: rgb(0, 159, 34);
+    background-color: rgb(199, 255, 176);
+    color: rgb(3, 202, 50);
     border-radius: 15px;
     padding: 5px 10px;
     font-size: 0.8rem;
@@ -350,7 +314,9 @@ input[type="checkbox"]:checked+label {
     font-size: 1rem;
 }
 
-
+.card-body{
+    padding: 0.8rem !important;
+}
 
 .card-text {
     color: black;
@@ -373,19 +339,28 @@ a {
     margin-top: 40px;
 }
 
-#prev-page,
-#next-page {
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+#prev-page:enabled,
+#next-page:enabled{
     background-color: #007481 !important;
     border: none;
     padding: 0px !important;
     padding-top: 5px !important;
     border-color: none !important;
 }
-
-.pagination {
-    justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+#prev-page:disabled,
+#next-page:disabled {
+    background-color: transparent;
+    border: 1px solid rgb(229, 229, 229);
+    color: black !important;
+    padding: 0px !important;
+    padding-top: 5px !important;
+    border-color: none !important;
 }
 
 .pagination button {
@@ -401,6 +376,7 @@ a {
     background-color: #007481 !important;
     color: white;
 }
+
 
 @media only screen and (max-width:1024px) {
     label {
