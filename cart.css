@@ -228,4 +228,13 @@ hr {
         justify-content: space-between;
         margin-bottom: 0 !important;
     }
+    
+        #empty-cart-message-container img {
+            height: 200px;
+        }
+    
+        #empty-cart-message-container p {
+            font-size: 1rem !important;
+            font-style: italic;
+        }
 }

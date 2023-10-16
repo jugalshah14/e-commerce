@@ -139,6 +139,9 @@ hr {
     .container {
         padding-bottom: 100px !important;
     }
+        .no-product-wishlist img{
+            height: 200px;
+        }
 
     .bottom-nav {
         display: flex !important;
