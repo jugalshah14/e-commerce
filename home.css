@@ -294,8 +294,8 @@ input[type="checkbox"]:checked+label {
 }
 
 .category-show {
-    background-color: rgb(199, 255, 176);
-    color: rgb(3, 202, 50);
+    background-color: rgb(130, 133, 130);
+    color: rgb(74, 74, 74);
     border-radius: 15px;
     padding: 5px 10px;
     font-size: 0.8rem;

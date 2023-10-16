@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     "total-discounted-price"
   );
   const totalItemsElement = document.getElementById("item-count");
+  const emptyCartMessageContainer = document.getElementById(
+    "empty-cart-message-container"
+  ); // Get the empty cart message container
 
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -12,15 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     cartContainer.innerHTML = "";
 
     if (cart.length === 0) {
-      const emptyCartMessage = document.createElement("div");
-      emptyCartMessage.textContent = "Your cart is empty";
-      emptyCartMessage.className = "empty-cart-message";
-      cartContainer.appendChild(emptyCartMessage);
+      cartContainer.style.display = "none";
+      emptyCartMessageContainer.style.display = "block"; // Show the empty cart message container
       totalPriceElement.style.display = "none";
       totalDiscountedPriceElement.style.display = "none";
       totalItemsElement.textContent = "0";
       document.querySelector(".checkout").style.display = "none";
     } else {
+      cartContainer.style.display = "block";
+      emptyCartMessageContainer.style.display = "none"; // Hide the empty cart message container
       let totalPrice = 0;
       let totalDiscountedPrice = 0;
       let totalItems = 0;

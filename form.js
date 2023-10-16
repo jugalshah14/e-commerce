@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   function addToLocalStorage() {
     const title = document.getElementById("Title").value;
+    const description = document.getElementById("Description").value;
     const category = document.getElementById("Category").value;
     const price = parseFloat(document.getElementById("Price").value);
     const imgInput = document.getElementById("img");
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (
       title &&
+      description &&
       category &&
       !isNaN(price) &&
       !isNaN(discount) &&
@@ -43,7 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 discount,
                 price,
                 availableQuantity,
-                img: imageFiles, // Store the array of image data
+                img: imageFiles,
+                description,
               };
 
               let items = JSON.parse(localStorage.getItem("items")) || [];
@@ -51,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
               localStorage.setItem("items", JSON.stringify(items));
 
               document.getElementById("Title").value = "";
+              document.getElementById("Description").value = "";
               document.getElementById("Category").value = "";
               document.getElementById("Discount").value = "";
               document.getElementById("Price").value = "";
@@ -133,12 +137,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const cell6 = row.insertCell(5);
       const cell7 = row.insertCell(6);
       const cell8 = row.insertCell(7);
+      const cell9 = row.insertCell(8);
 
       cell1.innerHTML = item.title;
-      cell2.innerHTML = item.category;
-      cell3.innerHTML = item.price;
-      cell4.innerHTML = item.discount;
-      cell5.innerHTML = item.availableQuantity;
+      cell2.innerHTML = item.description;
+      cell3.innerHTML = item.category;
+      cell4.innerHTML = item.price;
+      cell5.innerHTML = item.discount;
+      cell6.innerHTML = item.availableQuantity;
 
       // Create a div to hold the images
       const imgContainer = document.createElement("div");
@@ -153,10 +159,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       // Append the image container to the cell
-      cell6.appendChild(imgContainer);
+      cell7.appendChild(imgContainer);
 
-      cell7.innerHTML = `<button class="btn btn-primary" onclick="editItem(${index})">Edit</button>`;
-      cell8.innerHTML = `<button class="btn btn-primary" onclick="deleteItem(${index})">Delete</button>`;
+      cell8.innerHTML = `<button class="btn btn-primary" onclick="editItem(${index})">Edit</button>`;
+      cell9.innerHTML = `<button class="btn btn-primary" onclick="deleteItem(${index})">Delete</button>`;
     });
   }
 
@@ -195,6 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const items = JSON.parse(localStorage.getItem("items")) || [];
     const editedItem = {
       title: document.getElementById("Title").value,
+      description: document.getElementById("Description").value,
       category: document.getElementById("Category").value,
       price: document.getElementById("Price").value,
       discount: document.getElementById("Discount").value,
@@ -226,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("Discount").value = "";
             document.getElementById("Price").value = "";
             document.getElementById("Quantity").value = "";
-
+            document.getElementById("Description").value = "";
             document.getElementById("img").value = "";
             document.getElementById("itemImage").innerHTML = "";
           }
@@ -247,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("Discount").value = "";
       document.getElementById("Price").value = "";
       document.getElementById("Quantity").value = "";
-
+      document.getElementById("Description").value = "";
       document.getElementById("img").value = "";
       document.getElementById("itemImage").innerHTML = "";
     }

@@ -253,6 +253,11 @@ sortDropdown.addEventListener("change", sortProducts);
 
 sortProducts();
 
+function isProductInWishlist(productId) {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  return wishlist.some((item) => item.id === productId);
+}
+
 function createProductCards(products, container, customMessage) {
   let row = document.createElement("div");
   row.className = "row";
@@ -267,7 +272,7 @@ function createProductCards(products, container, customMessage) {
     }
 
     const cardDiv = document.createElement("div");
-    cardDiv.className = "col-lg-3 col-sm-6 ";
+    cardDiv.className = "col-lg-3 col-sm-6";
 
     const originalPrice = product.price;
     const discountedPrice = Math.round(
@@ -275,25 +280,27 @@ function createProductCards(products, container, customMessage) {
     );
 
     cardDiv.innerHTML = `
-                   <div class="card">
-      <div class="discount-badge">${product.discount}% Off</div>
-      <div class="wishlist-badge">
-      <ion-icon name="heart-outline" onclick="addToWishlist(${product.id})"></ion-icon>
-      </div>
-      <a href="product.html?id=${product.id}">
-        <img src="${product.image[0]}" class="card-img-top">
-      </a>
-      <div class="card-body">
-        <p class="category-show">${product.category}</p>
-        <div class="product-title">
-          <h6 class="card-title">${product.title}</h6>
+      <div class="card">
+        <div class="discount-badge">${product.discount}% Off</div>
+        <div class="wishlist-badge">
+          <ion-icon name="heart-outline" class="${
+            isProductInWishlist ? "active" : ""
+          }" onclick="addToWishlist(${product.id})"></ion-icon>
         </div>
-        <p class="card-text">
-          <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
-        </p>
+        <a href="product.html?id=${product.id}">
+          <img src="${product.image[0]}" class="card-img-top">
+        </a>
+        <div class="card-body">
+          <p class="category-show">${product.category}</p>
+          <div class="product-title">
+            <h6 class="card-title">${product.title}</h6>
+          </div>
+          <p class="card-text">
+            <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
+          </p>
+        </div>
       </div>
-    </div>
-  `;
+    `;
 
     row.appendChild(cardDiv);
     cardCount++;
@@ -513,6 +520,7 @@ function getFormDataFromLocalStorage() {
   return items.map((item) => ({
     id: item.id,
     title: item.title,
+    description: item.description,
     category: item.category,
     image: item.img,
     price: item.price,

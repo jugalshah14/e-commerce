@@ -39,8 +39,8 @@ hr {
 }
 
 .no-product-wishlist {
-    width: 50%;
-    text-align: center !important;
+    width: 100%;
+    text-align: center;
 }
 
 .container {

@@ -1,14 +1,16 @@
 function displayWishlistItems() {
   const wishlistContainer = document.getElementById("wishlist-container");
+  const noWishlistImage = document.getElementById("no-wishlist-image");
   wishlistContainer.innerHTML = "";
 
   const wishlistItems = JSON.parse(localStorage.getItem("wishlist")) || [];
 
   if (wishlistItems.length === 0) {
-    wishlistContainer.innerHTML =
-      "<img class='no-product-wishlist' src='https://2.bp.blogspot.com/-QfSOClZc8r0/XNr6srFlzjI/AAAAAAAAGlA/lzs505eFFiEdyAytzKkMabdUTihKywcqwCLcBGAs/s1600/EXAM360%2B-%2BNo%2BWishlist.png'>";
+    noWishlistImage.style.display = "block"; // Show the "No Wishlist Items" image
     return;
   }
+
+  noWishlistImage.style.display = "none"; // Hide the "No Wishlist Items" image
 
   let row = document.createElement("div");
   row.className = "row";
@@ -78,3 +80,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 window.addEventListener("load", displayWishlistItems);
+displayWishlistItems();

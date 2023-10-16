@@ -45,7 +45,16 @@ hr {
 .bottom-nav {
     display: none !important;
 }
-
+#empty-cart-message-container{
+    text-align: center;
+}
+#empty-cart-message-container img{
+    height: 600px;
+}
+#empty-cart-message-container p{
+    font-size: 2rem !important;
+    font-style: italic;
+}
 .cart-body {
     padding: 30px;
 }
