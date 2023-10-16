@@ -1,4 +1,6 @@
-
+.home-body{
+    min-height: 920px;
+}
 .nav {
     flex-direction: column;
     height: 80px !important;

@@ -49,6 +49,7 @@ hr {
 .product-detail-container {
   width: 100% !important;
   display: flex !important;
+  padding: 0 20px;
 }
 
 .product-images {
@@ -73,6 +74,18 @@ hr {
   margin-top: 10px;
   padding: 20px;
 }
+.slider-nav .slick-slide{
+  border: 1px solid #ccc;
+  margin: 0px 10px;
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+}
+.slider-nav .slick-slide:hover,.slider-nav .slick-current{
+  border:1px solid #007481;
+}
 
 .buttons{
   padding: 0 20px;
@@ -95,10 +108,8 @@ hr {
 
 .slider-nav img{
   height: 150px;
-  width: 100px;
-  border: 1px solid #ccc;
-  border-radius:10px ;
-  padding: 5px;
+ width: 100%; 
+ object-fit: contain;
 }
 
 .product-details {
@@ -193,6 +204,7 @@ hr {
 
  .product-detail-container{
   display: block !important;
+  padding: 0 15px !important;
  }
  .product-images{
   width: 100%  !important;
@@ -205,8 +217,7 @@ hr {
   padding: 0;
  }
  .slider-nav img{
-  height: 120px;
-  width: 80px;
+  height: 80px;
  }
  .buttons{
   padding: 0;
@@ -232,13 +243,14 @@ hr {
   }
 
   .mob-bottom {
+    padding: 0 10px;
     margin-left: 0;
     background-color: rgb(246, 246, 246);
     position: fixed;
     bottom: 50px;
     left: 0;
     width: 100%;
-    gap: 40px;
+    gap: 20px;
     display: flex !important;
     justify-content: center;
     align-items: center;
