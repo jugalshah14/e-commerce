@@ -124,9 +124,11 @@ hr {
     margin-bottom: 5px;
     font-size: 1rem;
 }
-.card-body{
+
+.card-body {
     padding: 0.8rem !important;
 }
+
 .card-text {
     color: black;
     font-size: 1.4rem;
@@ -136,12 +138,14 @@ hr {
     .nav {
         display: none !important;
     }
+
     .container {
         padding-bottom: 100px !important;
     }
-        .no-product-wishlist img{
-            height: 200px;
-        }
+
+    .no-product-wishlist img {
+        height: 200px;
+    }
 
     .bottom-nav {
         display: flex !important;
