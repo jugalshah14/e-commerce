@@ -38,16 +38,12 @@ if (product) {
           <p><b>${product.category}</b></p>
           <p class="desc">${product.description}</P>
           <div class="price">
-          <del><p> ₹ ${product.price}</p></del>
           <p> ₹ ${discountedPrice}</p>
+          <del><p> ₹ ${product.price}</p></del>         
           </div>
           <div class="quantity">
           <p>Quantity: ${product.availableQuantity}</p>
           </div>
-          <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
-        </div>
-        <div class="mob-bottom">
-          <p>Price : ₹ ${discountedPrice}</p>
           <a href="#" class="btn btn-primary addToCartBtn">Add To Cart</a>
         </div>
       </div>

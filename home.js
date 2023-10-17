@@ -282,10 +282,10 @@ function createProductCards(products, container, customMessage) {
     cardDiv.innerHTML = `
       <div class="card">
         <div class="discount-badge">${product.discount}% Off</div>
-        <div class="wishlist-badge">
-          <ion-icon name="heart-outline" class="${
-            isProductInWishlist ? "active" : ""
-          }" onclick="addToWishlist(${product.id})"></ion-icon>
+       <div class="wishlist-badge">
+          <ion-icon name="heart${
+            isProductInWishlist(product.id) ? "" : "-outline"
+          }" onclick="toggleWishlist(${product.id})"></ion-icon>
         </div>
         <a href="product.html?id=${product.id}">
           <img src="${product.image[0]}" class="card-img-top">
@@ -296,7 +296,7 @@ function createProductCards(products, container, customMessage) {
             <h6 class="card-title">${product.title}</h6>
           </div>
           <p class="card-text">
-            <b> ₹ ${discountedPrice}</b> &nbsp; <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
+            <b> ₹ ${discountedPrice}</b> <del style="color:rgb(191,191,191)" > ₹${originalPrice}</del>
           </p>
         </div>
       </div>
@@ -308,29 +308,30 @@ function createProductCards(products, container, customMessage) {
 
   container.appendChild(row);
 }
+function toggleWishlist(productId) {
+  const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+  const index = wishlist.findIndex((item) => item.id === productId);
 
-function addToWishlist(productId) {
-  // Retrieve the product from local storage based on productId
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const product = products.find((p) => p.id === productId);
+  if (index !== -1) {
+    wishlist.splice(index, 1);
 
-  if (product) {
-    // Retrieve the current wishlist from local storage or initialize an empty array
-    let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const icon = document.querySelector(`ion-icon[name="heart"]`);
+    if (icon) {
+      icon.name = `heart-outline`;
+    }
+  } else {
+    const products = JSON.parse(localStorage.getItem("products")) || [];
+    const product = products.find((p) => p.id === productId);
 
-    // Check if the product is already in the wishlist
-    const isProductInWishlist = wishlist.some((p) => p.id === productId);
-
-    if (!isProductInWishlist) {
-      // Add the product to the wishlist in local storage
+    if (product) {
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
-
-      // Show a toast message indicating that the product has been added to the wishlist
       showToast("Product added to wishlist");
-    } else {
-      // Product is already in the wishlist, show a toast message indicating that
-      showToast("Product is already in the wishlist");
+
+      const icon = document.querySelector(`ion-icon[name="heart-outline"]`);
+      if (icon) {
+        icon.name = `heart`;
+      }
     }
   }
 }
@@ -409,7 +410,6 @@ function findMaxPriceInLocalStorage() {
           maxPrice = product.price;
         }
       }
-      console.log(maxPrice);
       return parseInt(maxPrice);
     }
   }
