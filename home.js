@@ -409,8 +409,8 @@ function findMaxPriceInLocalStorage() {
           maxPrice = product.price;
         }
       }
-
-      return maxPrice;
+      console.log(maxPrice);
+      return parseInt(maxPrice);
     }
   }
   return 100;

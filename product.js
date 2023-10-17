@@ -97,13 +97,13 @@ $jq(document).ready(function () {
     focusOnSelect: true,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1440,
         settings: {
-          slidesToShow: 5,
+          slidesToShow: 3,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768,
         settings: {
           slidesToShow: 3,
         },
@@ -114,9 +114,6 @@ $jq(document).ready(function () {
           slidesToShow: 2,
         },
       },
-      // You can unslick at a given breakpoint now by adding:
-      // settings: "unslick"
-      // instead of a settings object
     ],
   });
 });
